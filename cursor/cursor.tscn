@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjotd0le1kirx"]
 
 [ext_resource type="Script" path="res://cursor/cursor.gd" id="1_ytn2u"]
-[ext_resource type="Texture2D" uid="uid://dacdk6o0ul41m" path="res://cursor/red_square.png" id="2_t7yay"]
+[ext_resource type="Texture2D" uid="uid://bwl0rws8l0qkd" path="res://cursor/crosshair.png" id="2_j83t4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kuud4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_t7yay")
+"texture": ExtResource("2_j83t4")
 }],
 "loop": true,
 "name": &"default",
@@ -15,6 +15,7 @@ animations = [{
 }]
 
 [node name="Cursor" type="Node2D"]
+scale = Vector2(4, 4)
 script = ExtResource("1_ytn2u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
