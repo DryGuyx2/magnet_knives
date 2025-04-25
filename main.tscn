@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0y1tfccsxmn2"]
+[gd_scene load_steps=4 format=3 uid="uid://d0y1tfccsxmn2"]
 
 [ext_resource type="PackedScene" uid="uid://70xgaapne6i" path="res://player/player.tscn" id="1_2de56"]
 [ext_resource type="PackedScene" uid="uid://bjotd0le1kirx" path="res://cursor/cursor.tscn" id="2_oxb3t"]
+[ext_resource type="Script" path="res://knife/knife_spawner.gd" id="3_yo3c0"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2de56")]
+
+[node name="KnifeSpawner" type="Node2D" parent="Player"]
+position = Vector2(-49.2, -34.4)
+scale = Vector2(0.2, 0.2)
+script = ExtResource("3_yo3c0")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
