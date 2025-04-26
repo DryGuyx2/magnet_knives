@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://70xgaapne6i"]
+[gd_scene load_steps=33 format=3 uid="uid://70xgaapne6i"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://cgj46vohllpt5" path="res://player/player.png" id="2_fis4v"]
+[ext_resource type="Texture2D" uid="uid://d01n8nqgppc0c" path="res://player/gun.png" id="3_wy43n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4egns"]
 atlas = ExtResource("2_fis4v")
@@ -208,6 +209,28 @@ animations = [{
 radius = 3.0
 height = 12.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m55et"]
+atlas = ExtResource("3_wy43n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7c2p"]
+atlas = ExtResource("3_wy43n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pqfg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m55et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7c2p")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_vagyu")
@@ -216,8 +239,18 @@ script = ExtResource("1_vagyu")
 position = Vector2(0, -0.4)
 sprite_frames = SubResource("SpriteFrames_eyslh")
 animation = &"moving_sideways"
-frame_progress = 0.920343
+frame_progress = 0.938543
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.2, 3)
 shape = SubResource("CapsuleShape2D_th7ts")
+
+[node name="GunPivot" type="Node2D" parent="."]
+position = Vector2(0, 2.8)
+
+[node name="Gun" type="AnimatedSprite2D" parent="GunPivot"]
+position = Vector2(-1.4, -2.4)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_0pqfg")
+animation = &"shoot"
+flip_h = true

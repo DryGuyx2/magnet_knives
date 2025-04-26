@@ -12,7 +12,10 @@ enum State {
 @export var dash_distance: int = 300 
 @export var dash_duration: float = 1 
 
-@onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D 
+@onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var gun_animations: AnimatedSprite2D = $GunPivot/Gun
+@onready var gun_pivot: Node2D = $GunPivot
+@export var cursor: Cursor
 
 var move_direction: Vector2 = Vector2.ZERO 
 
@@ -29,7 +32,8 @@ func _physics_process(delta: float) -> void:
 		velocity = move_direction * move_speed * delta 
 	elif current_state == State.IDLE:
 		velocity = Vector2.ZERO
-	handle_animations() 
+	handle_gun()
+	handle_animations()
 	move_and_slide()
 
 func engage_dash() -> void:
@@ -54,13 +58,13 @@ func update_state() -> void:
 		return
 	current_state = State.IDLE
 
-func handle_animations():
-	animation_component.flip_h = facing_left
+func handle_animations() -> void:
+	player_animations.flip_h = facing_left
 	
 	if current_state == State.MOVING:
-		animation_component.play("moving_%s" % get_string_direction())
+		player_animations.play("moving_%s" % get_string_direction())
 	elif current_state == State.IDLE:
-		animation_component.play("idle_%s" % get_string_direction())
+		player_animations.play("idle_%s" % get_string_direction())
 
 func get_string_direction() -> String:
 	if move_direction.x != 0:
@@ -73,3 +77,10 @@ func get_string_direction() -> String:
 		return "up"
 	
 	return "none"
+
+func handle_gun() -> void:
+	gun_pivot.look_at(cursor.global_position)
+	if cursor.global_position.x > global_position.x:
+		gun_pivot.scale.y = 1
+	else:
+		gun_pivot.scale.y = -1
