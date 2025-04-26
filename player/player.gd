@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	elif current_state == State.IDLE:
 		velocity = Vector2.ZERO
 	handle_animations() 
-	move_and_slide() 
+	move_and_slide()
 
 func engage_dash() -> void:
 	var dash_destination = global_position + move_direction * dash_distance
@@ -58,6 +58,18 @@ func handle_animations():
 	animation_component.flip_h = facing_left
 	
 	if current_state == State.MOVING:
-		animation_component.play("moving")
+		animation_component.play("moving_%s" % get_string_direction())
 	elif current_state == State.IDLE:
-		animation_component.play("idle")
+		animation_component.play("idle_%s" % get_string_direction())
+
+func get_string_direction() -> String:
+	if move_direction.x != 0:
+		return "sideways"
+	
+	if move_direction.y > 0:
+		return "down"
+	
+	if move_direction.y < 0:
+		return "up"
+	
+	return "none"
