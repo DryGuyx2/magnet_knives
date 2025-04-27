@@ -21,12 +21,10 @@ enum State {
 @onready var muzzle: Node2D = $HandPivot/Hands/Gunpivot/Gun/Muzzle
 @export var cursor: Cursor
 
-const HAND_1_GUN_POSITION = Vector2(1.807, -2.461)
-const HAND_2_GUN_POSITION = Vector2(-5.6, -2.2)
-
 var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 
 var move_direction: Vector2 = Vector2.ZERO 
+var last_moved_direction: Vector2 = Vector2.LEFT
 
 var current_state: State = initial_state 
 
@@ -37,6 +35,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
+	if move_direction != Vector2.ZERO:
+		last_moved_direction = move_direction
 	if move_direction.x != 0:
 		facing_left = move_direction.x > 0
 	update_state() 
@@ -73,7 +73,7 @@ func update_state() -> void:
 func handle_animations() -> void:
 	player_animations.flip_h = facing_left
 	
-	var string_direction = get_string_direction()
+	var string_direction = get_string_direction(last_moved_direction)
 	player_animations.z_index = int(string_direction == "up")
 	
 	if current_state == State.MOVING:
@@ -81,14 +81,14 @@ func handle_animations() -> void:
 	elif current_state == State.IDLE:
 		player_animations.play("idle_%s" % string_direction)
 
-func get_string_direction() -> String:
-	if move_direction.x != 0:
+func get_string_direction(direction: Vector2) -> String:
+	if direction.x != 0:
 		return "sideways"
 	
-	if move_direction.y > 0:
+	if direction.y > 0:
 		return "down"
 	
-	if move_direction.y < 0:
+	if direction.y < 0:
 		return "up"
 	
 	return "none"
