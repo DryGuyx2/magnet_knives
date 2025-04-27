@@ -239,18 +239,17 @@ script = ExtResource("1_vagyu")
 position = Vector2(0, -0.4)
 sprite_frames = SubResource("SpriteFrames_eyslh")
 animation = &"moving_sideways"
-frame_progress = 0.938543
+frame_progress = 0.989839
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.2, 3)
 shape = SubResource("CapsuleShape2D_th7ts")
 
 [node name="GunPivot" type="Node2D" parent="."]
-position = Vector2(0, 2.8)
+position = Vector2(1.2, 1.8)
 
 [node name="Gun" type="AnimatedSprite2D" parent="GunPivot"]
 position = Vector2(-1.4, -2.4)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_0pqfg")
 animation = &"shoot"
 flip_h = true

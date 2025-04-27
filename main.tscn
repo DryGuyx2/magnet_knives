@@ -6,7 +6,10 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("cursor") instance=ExtResource("1_2de56")]
+[node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("main_scene", "cursor") instance=ExtResource("1_2de56")]
+main_scene = NodePath("..")
 cursor = NodePath("../Cursor")
 
 [node name="KnifeSpawner" type="Node2D" parent="Player"]
@@ -15,5 +18,3 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("3_yo3c0")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]

@@ -7,6 +7,7 @@ enum State {
 	DASHING,
 }
 
+@export var main_scene: Node2D
 @export var move_speed: int = 10000 
 @export var initial_state: State = State.IDLE 
 @export var dash_distance: int = 300 
@@ -16,6 +17,8 @@ enum State {
 @onready var gun_animations: AnimatedSprite2D = $GunPivot/Gun
 @onready var gun_pivot: Node2D = $GunPivot
 @export var cursor: Cursor
+
+var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 
 var move_direction: Vector2 = Vector2.ZERO 
 
@@ -84,3 +87,9 @@ func handle_gun() -> void:
 		gun_pivot.scale.y = 1
 	else:
 		gun_pivot.scale.y = -1
+	
+	if Input.is_action_just_pressed("shoot"):
+		var bullet = BULLET_SCENE.instantiate()
+		bullet.global_position = global_position
+		bullet.target = cursor.position
+		main_scene.add_child(bullet)
