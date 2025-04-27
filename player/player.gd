@@ -10,7 +10,7 @@ enum State {
 @export var main_scene: Node2D
 @export var move_speed: int = 10000 
 @export var initial_state: State = State.IDLE 
-@export var dash_distance: int = 300 
+@export var dash_speed: int = 30000
 @export var dash_duration: float = 1 
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
@@ -44,16 +44,19 @@ func _physics_process(delta: float) -> void:
 		velocity = move_direction * move_speed * delta 
 	elif current_state == State.IDLE:
 		velocity = Vector2.ZERO
+	elif current_state == State.DASHING:
+		velocity = move_direction * dash_speed * delta
+		dash_time_left -= delta
+		if dash_time_left <= 0:
+			exit_dash()
 	handle_gun()
 	handle_animations()
 	move_and_slide()
 
+var dash_time_left: float = dash_duration 
 func engage_dash() -> void:
-	var dash_destination = global_position + move_direction * dash_distance
-	var dash_tween = create_tween()
-	dash_tween.tween_property(self, "position", dash_destination, dash_duration).set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
-	dash_tween.play()
-	dash_tween.tween_callback(exit_dash)
+	dash_time_left = dash_duration
+	current_state = State.DASHING
 
 func exit_dash() -> void:
 	current_state = State.IDLE

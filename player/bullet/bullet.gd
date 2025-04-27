@@ -22,5 +22,4 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: CharacterBody2D):
 	if body.has_method("damage"):
 		body.damage(damage)
-	print("HIT")
 	queue_free()

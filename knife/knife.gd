@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Knife
 
 @export var move_speed: int = 40
+@export var health: int = 3
 var player: Player
 
 func _ready() -> void:
@@ -15,3 +16,8 @@ func _physics_process(delta: float) -> void:
 	look_at(player.global_position)
 	velocity = (player.global_position - global_position) * move_speed * delta
 	move_and_slide()
+
+func damage(amount: int) -> void:
+	health -= amount
+	if health < 1:
+		queue_free()
