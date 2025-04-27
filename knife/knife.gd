@@ -4,7 +4,14 @@ class_name Knife
 @export var move_speed: int = 40
 var player: Player
 
-func _physics_process(delta) -> void:
+func _ready() -> void:
+	set_collision_layer_value(Global.collision_layers["physics"], true)
+	set_collision_mask_value(Global.collision_layers["physics"], true)
+	
+	set_collision_layer_value(Global.collision_layers["knife_detection"], true)
+	set_collision_mask_value(Global.collision_layers["player_detection"], true)
+
+func _physics_process(delta: float) -> void:
 	look_at(player.global_position)
 	velocity = (player.global_position - global_position) * move_speed * delta
 	move_and_slide()

@@ -9,10 +9,18 @@ var target: Vector2
 func _enter_tree() -> void:
 	look_at(target)
 
+func _ready() -> void:
+	set_collision_layer_value(Global.collision_layers["physics"], true)
+	set_collision_mask_value(Global.collision_layers["physics"], true)
+	
+	set_collision_mask_value(Global.collision_layers["knife_detection"], true)
+
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.has_method("damage"):
-		area.damage(damage)
+
+func _on_body_entered(body: CharacterBody2D):
+	if body.has_method("damage"):
+		body.damage(damage)
+	print("HIT")
 	queue_free()

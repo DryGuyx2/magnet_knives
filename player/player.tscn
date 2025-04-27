@@ -277,6 +277,8 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_vagyu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -295,7 +297,7 @@ scale = Vector2(-1, 1)
 position = Vector2(1, -0.2)
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_7jdic")
-frame_progress = 0.552657
+frame_progress = 0.198499
 
 [node name="Gunpivot" type="Node2D" parent="HandPivot/Hands"]
 position = Vector2(-5, 5.4)
