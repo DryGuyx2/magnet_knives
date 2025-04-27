@@ -6,9 +6,9 @@ class_name knife_spawner
 
 var KNIFE_SCENE = preload("res://knife/knife.tscn")
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_1"):
-		var knife = KNIFE_SCENE.instantiate()
-		knife.player = player
-		knife.global_position = global_position
-		main_scene.add_child(knife)
+#func _process(delta: float) -> void:
+#	if Input.is_action_just_pressed("test_1"):
+#		var knife = KNIFE_SCENE.instantiate()
+#		knife.player = player
+#		knife.global_position = global_position
+#		main_scene.add_child(knife)

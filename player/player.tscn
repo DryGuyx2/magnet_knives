@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://70xgaapne6i"]
+[gd_scene load_steps=40 format=3 uid="uid://70xgaapne6i"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://cgj46vohllpt5" path="res://player/player.png" id="2_fis4v"]
-[ext_resource type="Texture2D" uid="uid://d01n8nqgppc0c" path="res://player/gun.png" id="3_wy43n"]
+[ext_resource type="Texture2D" uid="uid://x6rk4r0f1k0c" path="res://player/hands.png" id="3_1utux"]
+[ext_resource type="Texture2D" uid="uid://bvipobv8mb2wj" path="res://player/gun.png" id="3_wy43n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4egns"]
 atlas = ExtResource("2_fis4v")
@@ -209,25 +210,68 @@ animations = [{
 radius = 3.0
 height = 12.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m55et"]
-atlas = ExtResource("3_wy43n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_03s5o"]
+atlas = ExtResource("3_1utux")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7c2p"]
-atlas = ExtResource("3_wy43n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmuch"]
+atlas = ExtResource("3_1utux")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0pqfg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_84h3f"]
+atlas = ExtResource("3_1utux")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dii73"]
+atlas = ExtResource("3_1utux")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sl3s"]
+atlas = ExtResource("3_1utux")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r64qc"]
+atlas = ExtResource("3_1utux")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jdic"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m55et")
+"texture": SubResource("AtlasTexture_03s5o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7c2p")
+"texture": SubResource("AtlasTexture_fmuch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84h3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dii73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sl3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r64qc")
 }],
 "loop": true,
-"name": &"shoot",
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xac"]
+atlas = ExtResource("3_wy43n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hfxl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xac")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -238,18 +282,32 @@ script = ExtResource("1_vagyu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -0.4)
 sprite_frames = SubResource("SpriteFrames_eyslh")
-animation = &"moving_sideways"
-frame_progress = 0.989839
+animation = &"idle_sideways"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.2, 3)
 shape = SubResource("CapsuleShape2D_th7ts")
 
-[node name="GunPivot" type="Node2D" parent="."]
-position = Vector2(1.2, 1.8)
+[node name="HandPivot" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
 
-[node name="Gun" type="AnimatedSprite2D" parent="GunPivot"]
-position = Vector2(-1.4, -2.4)
-sprite_frames = SubResource("SpriteFrames_0pqfg")
-animation = &"shoot"
+[node name="Hands" type="AnimatedSprite2D" parent="HandPivot"]
+position = Vector2(1, -0.2)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_7jdic")
+frame_progress = 0.771475
+
+[node name="Gunpivot" type="Node2D" parent="HandPivot/Hands"]
+position = Vector2(-5, 5.4)
+rotation = 0.308896
+scale = Vector2(1, 1)
+
+[node name="Gun" type="AnimatedSprite2D" parent="HandPivot/Hands/Gunpivot"]
+position = Vector2(-9.53674e-07, 0)
+sprite_frames = SubResource("SpriteFrames_7hfxl")
+frame_progress = 0.737034
 flip_h = true
+flip_v = true
+
+[node name="Muzzle" type="Node2D" parent="HandPivot/Hands/Gunpivot/Gun"]
+position = Vector2(5.28617, 2.09198)

@@ -14,9 +14,15 @@ enum State {
 @export var dash_duration: float = 1 
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
-@onready var gun_animations: AnimatedSprite2D = $GunPivot/Gun
-@onready var gun_pivot: Node2D = $GunPivot
+@onready var hand_pivot: Node2D = $HandPivot
+@onready var gun_animations: AnimatedSprite2D = $HandPivot/Hands/Gunpivot/Gun
+@onready var gun_pivot: Node2D = $HandPivot/Hands/Gunpivot
+@onready var hands: AnimatedSprite2D = $HandPivot/Hands
+@onready var muzzle: Node2D = $HandPivot/Hands/Gunpivot/Gun/Muzzle
 @export var cursor: Cursor
+
+const HAND_1_GUN_POSITION = Vector2(1.807, -2.461)
+const HAND_2_GUN_POSITION = Vector2(-5.6, -2.2)
 
 var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 
@@ -25,6 +31,9 @@ var move_direction: Vector2 = Vector2.ZERO
 var current_state: State = initial_state 
 
 var facing_left: bool = false 
+
+func _ready() -> void:
+	hands.play()
 
 func _physics_process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
@@ -64,10 +73,13 @@ func update_state() -> void:
 func handle_animations() -> void:
 	player_animations.flip_h = facing_left
 	
+	var string_direction = get_string_direction()
+	player_animations.z_index = int(string_direction == "up")
+	
 	if current_state == State.MOVING:
-		player_animations.play("moving_%s" % get_string_direction())
+		player_animations.play("moving_%s" % string_direction)
 	elif current_state == State.IDLE:
-		player_animations.play("idle_%s" % get_string_direction())
+		player_animations.play("idle_%s" % string_direction)
 
 func get_string_direction() -> String:
 	if move_direction.x != 0:
@@ -82,14 +94,15 @@ func get_string_direction() -> String:
 	return "none"
 
 func handle_gun() -> void:
-	gun_pivot.look_at(cursor.global_position)
-	if cursor.global_position.x > global_position.x:
-		gun_pivot.scale.y = 1
-	else:
-		gun_pivot.scale.y = -1
+	if cursor.global_position.x < global_position.x:
+		hand_pivot.scale.x = 1
+	elif cursor.global_position.x > global_position.x:
+		hand_pivot.scale.x = -1
+	
+	gun_animations.look_at(cursor.position)
 	
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = BULLET_SCENE.instantiate()
-		bullet.global_position = global_position
+		bullet.global_position = muzzle.global_position
 		bullet.target = cursor.position
 		main_scene.add_child(bullet)

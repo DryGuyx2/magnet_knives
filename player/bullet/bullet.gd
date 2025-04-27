@@ -12,7 +12,6 @@ func _enter_tree() -> void:
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("damage"):
 		area.damage(damage)
