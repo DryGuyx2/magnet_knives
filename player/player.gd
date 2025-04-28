@@ -70,29 +70,36 @@ func update_state() -> void:
 	current_state = State.IDLE
 
 func handle_animations() -> void:
+	var mouse_direction = get_mouse_direction()
 	
-	player_animations.flip_h = last_moved_direction.x > 0
+	player_animations.flip_h = mouse_direction == "right"
 	
-	var string_direction = get_string_direction(last_moved_direction)
+	if mouse_direction in ["left", "right"]:
+		mouse_direction = "sideways"
 	
-	player_animations.z_index = int(string_direction == "up")
+	player_animations.z_index = int(mouse_direction == "up")
 	
 	if current_state == State.MOVING:
-		player_animations.play("moving_%s" % string_direction)
+		player_animations.play("moving_%s" % mouse_direction)
 	elif current_state == State.IDLE:
-		player_animations.play("idle_%s" % string_direction)
+		player_animations.play("idle_%s" % mouse_direction)
 
-func get_string_direction(direction: Vector2) -> String:
-	if direction.x != 0:
-		return "sideways"
+func get_mouse_direction() -> String:
+	var mouse_position = get_local_mouse_position()
+	if mouse_position.abs().x > mouse_position.abs().y:
+		if mouse_position.x < 0:
+			return "left"
+		if mouse_position.x > 0:
+			return "right"
 	
-	if direction.y > 0:
+	if mouse_position.y > 0:
 		return "down"
 	
-	if direction.y < 0:
+	if mouse_position.y < 0:
 		return "up"
 	
-	return "none"
+	# If the mouse is at dead center we default to left
+	return "left"
 
 func handle_gun() -> void:
 	if cursor.global_position.x < global_position.x:
