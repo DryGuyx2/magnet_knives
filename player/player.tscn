@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://cgj46vohllpt5" path="res://player/player.png" id="2_fis4v"]
 [ext_resource type="Texture2D" uid="uid://x6rk4r0f1k0c" path="res://player/hands.png" id="3_1utux"]
-[ext_resource type="Texture2D" uid="uid://bvipobv8mb2wj" path="res://player/gun.png" id="3_wy43n"]
+[ext_resource type="Texture2D" uid="uid://bycpt28gdtwef" path="res://player/gun.png" id="3_wy43n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4egns"]
 atlas = ExtResource("2_fis4v")
@@ -257,10 +257,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4xac"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_clneb"]
 atlas = ExtResource("3_wy43n")
 region = Rect2(0, 0, 32, 32)
 
@@ -268,9 +268,9 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h4xac")
+"texture": SubResource("AtlasTexture_clneb")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -305,7 +305,7 @@ rotation = 0.308896
 [node name="Gun" type="AnimatedSprite2D" parent="HandPivot/Hands/Gunpivot"]
 position = Vector2(-9.53674e-07, 0)
 sprite_frames = SubResource("SpriteFrames_7hfxl")
-frame_progress = 0.737034
+frame_progress = 1.0
 flip_h = true
 flip_v = true
 

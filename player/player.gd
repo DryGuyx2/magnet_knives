@@ -119,6 +119,7 @@ func handle_gun(delta: float) -> void:
 		gun_on_cooldown = false
 	
 	if Input.is_action_pressed("shoot") and not gun_on_cooldown:
+		gun_animations.play()
 		var bullet = BULLET_SCENE.instantiate()
 		bullet.global_position = muzzle.global_position
 		bullet.target = cursor.position
