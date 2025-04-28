@@ -3,6 +3,7 @@ class_name Bullet
 
 @export var speed: int = 1000
 @export var damage: int = 1
+@export var knockback: int = 10000
 var target: Vector2
 @onready var direction: Vector2 = (target - position).normalized()
 
@@ -21,5 +22,5 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: CharacterBody2D):
 	if body.has_method("damage"):
-		body.damage(damage)
+		body.damage(damage, direction * knockback)
 	queue_free()
