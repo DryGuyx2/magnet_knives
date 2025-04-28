@@ -12,6 +12,7 @@ enum State {
 @export var initial_state: State = State.IDLE 
 @export var dash_speed: int = 30000
 @export var dash_duration: float = 1 
+@export var gun_cooldown_time: int = 1
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand_pivot: Node2D = $HandPivot
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		dash_time_left -= delta
 		if dash_time_left <= 0:
 			exit_dash()
-	handle_gun()
+	handle_gun(delta)
 	handle_animations()
 	move_and_slide()
 
@@ -101,7 +102,10 @@ func get_mouse_direction() -> String:
 	# If the mouse is at dead center we default to left
 	return "left"
 
-func handle_gun() -> void:
+var gun_cooldown_time_left = gun_cooldown_time
+var gun_on_cooldown = false
+
+func handle_gun(delta: float) -> void:
 	if cursor.global_position.x < global_position.x:
 		hand_pivot.scale.x = 1
 	elif cursor.global_position.x > global_position.x:
@@ -109,8 +113,15 @@ func handle_gun() -> void:
 	
 	gun_animations.look_at(cursor.position)
 	
-	if Input.is_action_just_pressed("shoot"):
+	if gun_on_cooldown:
+		gun_cooldown_time_left -= delta
+	if gun_cooldown_time_left <= 0:
+		gun_on_cooldown = false
+	
+	if Input.is_action_pressed("shoot") and not gun_on_cooldown:
 		var bullet = BULLET_SCENE.instantiate()
 		bullet.global_position = muzzle.global_position
 		bullet.target = cursor.position
 		main_scene.add_child(bullet)
+		gun_on_cooldown = true
+		gun_cooldown_time_left = gun_cooldown_time
