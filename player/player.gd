@@ -28,8 +28,6 @@ var last_moved_direction: Vector2 = Vector2.LEFT
 
 var current_state: State = initial_state 
 
-var facing_left: bool = false 
-
 func _ready() -> void:
 	hands.play()
 
@@ -37,8 +35,6 @@ func _physics_process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
 	if move_direction != Vector2.ZERO:
 		last_moved_direction = move_direction
-	if move_direction.x != 0:
-		facing_left = move_direction.x > 0
 	update_state() 
 	if current_state == State.MOVING:
 		velocity = move_direction * move_speed * delta 
@@ -74,9 +70,11 @@ func update_state() -> void:
 	current_state = State.IDLE
 
 func handle_animations() -> void:
-	player_animations.flip_h = facing_left
+	
+	player_animations.flip_h = last_moved_direction.x > 0
 	
 	var string_direction = get_string_direction(last_moved_direction)
+	
 	player_animations.z_index = int(string_direction == "up")
 	
 	if current_state == State.MOVING:

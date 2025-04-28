@@ -7,6 +7,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
+z_index = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("main_scene", "cursor") instance=ExtResource("1_2de56")]
 main_scene = NodePath("..")

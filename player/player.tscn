@@ -295,14 +295,12 @@ scale = Vector2(-1, 1)
 
 [node name="Hands" type="AnimatedSprite2D" parent="HandPivot"]
 position = Vector2(1, -0.2)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_7jdic")
-frame_progress = 0.521236
+frame_progress = 0.305512
 
 [node name="Gunpivot" type="Node2D" parent="HandPivot/Hands"]
 position = Vector2(-5, 5.4)
 rotation = 0.308896
-scale = Vector2(1, 1)
 
 [node name="Gun" type="AnimatedSprite2D" parent="HandPivot/Hands/Gunpivot"]
 position = Vector2(-9.53674e-07, 0)
