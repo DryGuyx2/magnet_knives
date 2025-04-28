@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://70xgaapne6i" path="res://player/player.tscn" id="1_2de56"]
 [ext_resource type="PackedScene" uid="uid://bjotd0le1kirx" path="res://cursor/cursor.tscn" id="2_oxb3t"]
-[ext_resource type="Script" path="res://knife/knife_spawner.gd" id="3_yo3c0"]
+[ext_resource type="Script" path="res://knives/simple/knife_spawner.gd" id="3_yo3c0"]
 
 [node name="Main" type="Node2D"]
 

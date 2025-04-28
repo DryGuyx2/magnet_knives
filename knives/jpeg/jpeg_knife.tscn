@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://do8yyqd26qenw"]
+
+[ext_resource type="Script" path="res://knives/jpeg/jpeg_knife.gd" id="1_xg0gb"]
+[ext_resource type="Texture2D" uid="uid://b38i6i1d2jen8" path="res://knives/jpeg/jpeg_knife_stage1.jpg" id="2_pkpt6"]
+[ext_resource type="Texture2D" uid="uid://b5wsa4d4cj8ys" path="res://knives/jpeg/jpeg_knife_stage2.jpg" id="3_0egwg"]
+[ext_resource type="Texture2D" uid="uid://pamk6cfnkcj0" path="res://knives/jpeg/jpeg_knife_stage3.jpg" id="4_23flk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ene3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pkpt6")
+}],
+"loop": true,
+"name": &"stage_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0egwg")
+}],
+"loop": true,
+"name": &"stage_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_23flk")
+}],
+"loop": true,
+"name": &"stage_3",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u1c4"]
+size = Vector2(576, 432)
+
+[node name="JpegKnife" type="CharacterBody2D"]
+scale = Vector2(0.125, 0.125)
+motion_mode = 1
+script = ExtResource("1_xg0gb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_ene3i")
+animation = &"stage_3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3u1c4")
