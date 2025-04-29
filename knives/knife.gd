@@ -10,7 +10,7 @@ func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["physics"], true)
 	
 	set_collision_layer_value(Global.collision_layers["knife_detection"], true)
-	set_collision_mask_value(Global.collision_layers["player_detection"], true)
+	set_collision_layer_value(Global.collision_layers["player_detection"], true)
 
 var knockback_buffer: Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:

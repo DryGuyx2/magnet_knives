@@ -311,4 +311,4 @@ flip_h = true
 flip_v = true
 
 [node name="Muzzle" type="Node2D" parent="HandPivot/Hands/Gunpivot/Gun"]
-position = Vector2(5.28617, 2.09198)
+position = Vector2(5.22537, 1.90145)

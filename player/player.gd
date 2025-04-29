@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal dead
+
 enum State {
 	IDLE,
 	MOVING,
@@ -8,11 +10,12 @@ enum State {
 }
 
 @export var main_scene: Node2D
-@export var move_speed: int = 10000 
-@export var initial_state: State = State.IDLE 
+@export var move_speed: int = 10000
+@export var initial_state: State = State.IDLE
 @export var dash_speed: int = 30000
-@export var dash_duration: float = 1 
-@export var gun_cooldown_time: int = 1
+@export var dash_duration: float = 1
+@export var gun_cooldown_time: float = 0.5
+@export var max_health: int = 3
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand_pivot: Node2D = $HandPivot
@@ -27,9 +30,14 @@ var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 var move_direction: Vector2 = Vector2.ZERO 
 var last_moved_direction: Vector2 = Vector2.LEFT
 
+var health: int = max_health
 var current_state: State = initial_state 
 
 func _ready() -> void:
+	set_collision_layer_value(Global.collision_layers["physics"], true)
+	set_collision_mask_value(Global.collision_layers["physics"], true)
+	
+	set_collision_layer_value(Global.collision_layers["player_detection"], true)
 	hands.play()
 
 func _physics_process(delta: float) -> void:
@@ -38,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		last_moved_direction = move_direction
 	update_state() 
 	if current_state == State.MOVING:
-		velocity = move_direction * move_speed * delta 
+		velocity = move_direction * move_speed * delta + knockback_buffer * delta 
 	elif current_state == State.IDLE:
 		velocity = Vector2.ZERO
 	elif current_state == State.DASHING:
@@ -46,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		dash_time_left -= delta
 		if dash_time_left <= 0:
 			exit_dash()
+	knockback_buffer = lerp(knockback_buffer, Vector2.ZERO, 0.1)
 	handle_gun(delta)
 	handle_animations()
 	move_and_slide()
@@ -102,7 +111,7 @@ func get_mouse_direction() -> String:
 	# If the mouse is at dead center we default to left
 	return "left"
 
-var gun_cooldown_time_left = gun_cooldown_time
+var gun_cooldown_time_left: float = gun_cooldown_time
 var gun_on_cooldown = false
 
 func handle_gun(delta: float) -> void:
@@ -126,3 +135,12 @@ func handle_gun(delta: float) -> void:
 		main_scene.add_child(bullet)
 		gun_on_cooldown = true
 		gun_cooldown_time_left = gun_cooldown_time
+
+var knockback_buffer: Vector2 = Vector2.ZERO
+func damage(amount: int, knockback: Vector2) -> void:
+	health -= amount
+	knockback_buffer = knockback
+	
+	if health < 1:
+		emit_signal("dead")
+		queue_free()

@@ -11,9 +11,6 @@ func _enter_tree() -> void:
 	look_at(target)
 
 func _ready() -> void:
-	set_collision_layer_value(Global.collision_layers["physics"], true)
-	set_collision_mask_value(Global.collision_layers["physics"], true)
-	
 	set_collision_mask_value(Global.collision_layers["knife_detection"], true)
 
 func _process(delta: float) -> void:
