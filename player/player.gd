@@ -61,10 +61,12 @@ func _physics_process(delta: float) -> void:
 
 var dash_time_left: float = dash_duration 
 func engage_dash() -> void:
+	hands.visible = false
 	dash_time_left = dash_duration
 	current_state = State.DASHING
 
 func exit_dash() -> void:
+	hands.visible = true
 	current_state = State.IDLE
 
 func update_state() -> void:
@@ -80,7 +82,7 @@ func update_state() -> void:
 	current_state = State.IDLE
 
 func handle_animations() -> void:
-	var mouse_direction = get_mouse_direction()
+	var mouse_direction = get_mouse_string_direction()
 	
 	player_animations.flip_h = mouse_direction == "right"
 	
@@ -93,8 +95,15 @@ func handle_animations() -> void:
 		player_animations.play("moving_%s" % mouse_direction)
 	elif current_state == State.IDLE:
 		player_animations.play("idle_%s" % mouse_direction)
+	elif current_state == State.DASHING:
+		var dash_direction = direction_to_string(move_direction)
+		player_animations.flip_h = dash_direction == "right"
+		if dash_direction in ["left", "right"]:
+			dash_direction = "sideways"
+		
+		player_animations.play("dash_%s" % dash_direction)
 
-func get_mouse_direction() -> String:
+func get_mouse_string_direction() -> String:
 	var mouse_position = get_local_mouse_position()
 	if mouse_position.abs().x > mouse_position.abs().y:
 		if mouse_position.x < 0:
@@ -109,6 +118,21 @@ func get_mouse_direction() -> String:
 		return "up"
 	
 	# If the mouse is at dead center we default to left
+	return "left"
+
+func direction_to_string(direction: Vector2) -> String:
+	if direction.x > 0:
+		return "right"
+	
+	if direction.x < 0:
+		return "left"
+	
+	if direction.y > 0:
+		return "down"
+	
+	if direction.y < 0:
+		return "up"
+	
 	return "left"
 
 var gun_cooldown_time_left: float = gun_cooldown_time
