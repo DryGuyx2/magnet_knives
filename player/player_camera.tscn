@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://do0tbabg2am0a"]
+
+[ext_resource type="Script" path="res://player/player_camera.gd" id="1_iryno"]
+[ext_resource type="Texture2D" uid="uid://fc07xy1krf22" path="res://player/health.png" id="1_pi546"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0xnj"]
+atlas = ExtResource("1_pi546")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvcb3"]
+atlas = ExtResource("1_pi546")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kydh"]
+atlas = ExtResource("1_pi546")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0i8qp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0xnj")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvcb3")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kydh")
+}],
+"loop": true,
+"name": &"half",
+"speed": 5.0
+}]
+
+[node name="PlayerCamera" type="Camera2D"]
+script = ExtResource("1_iryno")
+
+[node name="Health" type="AnimatedSprite2D" parent="."]
+position = Vector2(-527, -273)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_0i8qp")
+animation = &"full"

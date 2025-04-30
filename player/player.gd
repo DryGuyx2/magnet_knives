@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal dead
+signal hurt(health: int)
 
 enum State {
 	IDLE,
@@ -15,7 +16,7 @@ enum State {
 @export var dash_speed: int = 30000
 @export var dash_duration: float = 1
 @export var gun_cooldown_time: float = 0.5
-@export var max_health: int = 3
+@export var max_health: int = 2
 
 @onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand_pivot: Node2D = $HandPivot
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	if current_state == State.MOVING:
 		velocity = move_direction * move_speed * delta + knockback_buffer * delta 
 	elif current_state == State.IDLE:
-		velocity = Vector2.ZERO
+		velocity = knockback_buffer * delta 
 	elif current_state == State.DASHING:
 		velocity = move_direction * dash_speed * delta
 		dash_time_left -= delta
@@ -168,3 +169,5 @@ func damage(amount: int, knockback: Vector2) -> void:
 	if health < 1:
 		emit_signal("dead")
 		queue_free()
+	
+	emit_signal("hurt", health)
