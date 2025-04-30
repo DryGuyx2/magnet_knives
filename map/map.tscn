@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://blae2l1n3abdw"]
+[gd_scene load_steps=11 format=3 uid="uid://blae2l1n3abdw"]
 
 [ext_resource type="Texture2D" uid="uid://bjevwf2d5i6kn" path="res://map/floor.png" id="1_rh67i"]
 [ext_resource type="Texture2D" uid="uid://dcuodgfhh8w36" path="res://map/walls.png" id="2_74wa8"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bg37h0hy1ean1" path="res://map/interior/table.tscn" id="5_s2jpb"]
 [ext_resource type="PackedScene" uid="uid://dt5n1d4ogv0d1" path="res://map/interior/food_buffet.tscn" id="6_4b86v"]
 [ext_resource type="PackedScene" uid="uid://rgwu6iqy6v7o" path="res://map/interior/fridge.tscn" id="7_065fe"]
+[ext_resource type="PackedScene" uid="uid://domf830tmx7me" path="res://map/interior/locker_front.tscn" id="8_r6b5f"]
+[ext_resource type="PackedScene" uid="uid://b2nfdl0327iqu" path="res://map/interior/locker_back_short.tscn" id="9_d60g5"]
+[ext_resource type="PackedScene" uid="uid://cxt5cfhyxjtj" path="res://map/interior/locker_back_long.tscn" id="10_xx3nr"]
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
@@ -216,3 +219,14 @@ position = Vector2(120, 1511)
 
 [node name="Fridge" parent="EatingHall/FoodArea" instance=ExtResource("7_065fe")]
 position = Vector2(561, 1508)
+
+[node name="Lockerroom" type="Node2D" parent="."]
+
+[node name="LockerFront" parent="Lockerroom" instance=ExtResource("8_r6b5f")]
+position = Vector2(-1770, 450)
+
+[node name="LockerBackShort" parent="Lockerroom" instance=ExtResource("9_d60g5")]
+position = Vector2(-1613, 918)
+
+[node name="LockerBackLong" parent="Lockerroom" instance=ExtResource("10_xx3nr")]
+position = Vector2(-2231, 916)
