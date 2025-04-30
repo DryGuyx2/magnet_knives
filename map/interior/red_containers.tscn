@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bupustvctgrwg"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_7hhde"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_071r4"]
+atlas = ExtResource("1_7hhde")
+region = Rect2(3584, 0, 231, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwhkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_071r4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RedContainers" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_fwhkm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+scale = Vector2(7, 7)
+polygon = PackedVector2Array(-0.228571, 7.68571, 7.94286, 7.71429, 7.94286, 1.57143, 6.8, 1.57143, 6.8, 0, -8.65714, 0, -8.62857, 3.57143, -0.2, 3.57143)

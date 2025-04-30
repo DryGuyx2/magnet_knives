@@ -14,7 +14,7 @@ script = ExtResource("1_02xko")
 [node name="Map" parent="." instance=ExtResource("6_giojb")]
 
 [node name="Player" parent="Map" node_paths=PackedStringArray("main_scene", "cursor") instance=ExtResource("1_2de56")]
-position = Vector2(0, 0)
+position = Vector2(-2047, -1375)
 main_scene = NodePath("../..")
 cursor = NodePath("../../Cursor")
 
@@ -29,4 +29,5 @@ scale = Vector2(0.2, 0.2)
 player = NodePath("..")
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
-z_index = 2
+z_index = 5
+position = Vector2(-1079, -1385)

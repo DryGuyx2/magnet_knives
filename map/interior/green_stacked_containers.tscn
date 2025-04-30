@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6wqda50ac78"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_vvo5y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhibs"]
+atlas = ExtResource("1_vvo5y")
+region = Rect2(3885, 0, 259, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3yv47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhibs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b2ad"]
+size = Vector2(107.8, 17.9)
+
+[node name="GreenStackedContainers" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_3yv47")
+offset = Vector2(0, -16.515)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.4, 8.55)
+shape = SubResource("RectangleShape2D_2b2ad")

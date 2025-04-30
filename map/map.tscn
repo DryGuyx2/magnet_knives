@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blae2l1n3abdw"]
+[gd_scene load_steps=18 format=3 uid="uid://blae2l1n3abdw"]
 
 [ext_resource type="Texture2D" uid="uid://bjevwf2d5i6kn" path="res://map/floor.png" id="1_rh67i"]
 [ext_resource type="Texture2D" uid="uid://dcuodgfhh8w36" path="res://map/walls.png" id="2_74wa8"]
@@ -10,6 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://domf830tmx7me" path="res://map/interior/locker_front.tscn" id="8_r6b5f"]
 [ext_resource type="PackedScene" uid="uid://b2nfdl0327iqu" path="res://map/interior/locker_back_short.tscn" id="9_d60g5"]
 [ext_resource type="PackedScene" uid="uid://cxt5cfhyxjtj" path="res://map/interior/locker_back_long.tscn" id="10_xx3nr"]
+[ext_resource type="PackedScene" uid="uid://b4d8yrf2oml06" path="res://map/interior/swords_container.tscn" id="11_m4os8"]
+[ext_resource type="PackedScene" uid="uid://cu8urjbikotlc" path="res://map/interior/green_blue_containers.tscn" id="12_lng2x"]
+[ext_resource type="PackedScene" uid="uid://bupustvctgrwg" path="res://map/interior/red_containers.tscn" id="13_4nnhx"]
+[ext_resource type="PackedScene" uid="uid://ciayo0kvmurdm" path="res://map/interior/green_knife_container.tscn" id="14_b2ciy"]
+[ext_resource type="PackedScene" uid="uid://dbutrhv6o2nol" path="res://map/interior/small_green_container.tscn" id="15_kwk4d"]
+[ext_resource type="PackedScene" uid="uid://bl752jfseeigh" path="res://map/interior/blue_containers.tscn" id="16_inspf"]
+[ext_resource type="PackedScene" uid="uid://bp6wqda50ac78" path="res://map/interior/green_stacked_containers.tscn" id="17_o341a"]
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
@@ -47,6 +54,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("3_2lffu")
 
 [node name="EatingHall" type="Node2D" parent="."]
+z_index = 2
 y_sort_enabled = true
 
 [node name="ChairCluster" type="Node2D" parent="EatingHall"]
@@ -220,13 +228,46 @@ position = Vector2(120, 1511)
 [node name="Fridge" parent="EatingHall/FoodArea" instance=ExtResource("7_065fe")]
 position = Vector2(561, 1508)
 
-[node name="Lockerroom" type="Node2D" parent="."]
+[node name="LockerRoom" type="Node2D" parent="."]
+z_index = 2
 
-[node name="LockerFront" parent="Lockerroom" instance=ExtResource("8_r6b5f")]
+[node name="LockerFront" parent="LockerRoom" instance=ExtResource("8_r6b5f")]
 position = Vector2(-1770, 450)
 
-[node name="LockerBackShort" parent="Lockerroom" instance=ExtResource("9_d60g5")]
+[node name="LockerBackShort" parent="LockerRoom" instance=ExtResource("9_d60g5")]
 position = Vector2(-1613, 918)
 
-[node name="LockerBackLong" parent="Lockerroom" instance=ExtResource("10_xx3nr")]
+[node name="LockerBackLong" parent="LockerRoom" instance=ExtResource("10_xx3nr")]
 position = Vector2(-2231, 916)
+
+[node name="StorageRoom" type="Node2D" parent="."]
+z_index = 2
+y_sort_enabled = true
+
+[node name="SwordsContainer" parent="StorageRoom" instance=ExtResource("11_m4os8")]
+y_sort_enabled = true
+position = Vector2(-442, -2030)
+
+[node name="GreenBlueContainers" parent="StorageRoom" instance=ExtResource("12_lng2x")]
+y_sort_enabled = true
+position = Vector2(-1155, -1865)
+
+[node name="RedContainers" parent="StorageRoom" instance=ExtResource("13_4nnhx")]
+y_sort_enabled = true
+position = Vector2(-1559, -1623)
+
+[node name="GreenKnifeContainer" parent="StorageRoom" instance=ExtResource("14_b2ciy")]
+y_sort_enabled = true
+position = Vector2(-2546, -2246)
+
+[node name="SmallGreenContainer" parent="StorageRoom" instance=ExtResource("15_kwk4d")]
+y_sort_enabled = true
+position = Vector2(-2660, -2013)
+
+[node name="BlueContainers" parent="StorageRoom" instance=ExtResource("16_inspf")]
+y_sort_enabled = true
+position = Vector2(-2644, -1147)
+
+[node name="GreenStackedContainers" parent="StorageRoom" instance=ExtResource("17_o341a")]
+y_sort_enabled = true
+position = Vector2(-457, -1085)

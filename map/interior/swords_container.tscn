@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4d8yrf2oml06"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_ppxam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tdip"]
+atlas = ExtResource("1_ppxam")
+region = Rect2(4230, 0, 240, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t5g6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tdip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cki6d"]
+size = Vector2(107.8, 20.4)
+
+[node name="SwordsContainer" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_1t5g6")
+offset = Vector2(15.235, -6.005)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.6, 10.4)
+shape = SubResource("RectangleShape2D_cki6d")

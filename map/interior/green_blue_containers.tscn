@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu8urjbikotlc"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_lj0ff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ku45"]
+atlas = ExtResource("1_lj0ff")
+region = Rect2(3270, 0, 240, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyoni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ku45")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GreenBlueContainers" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_pyoni")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-9, 2)
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(9.33333, 8.5, 9.33333, 2.16667, 8.33333, 2.16667, 8.36667, -0.333333, -9.66667, -0.333333, -9.66667, 4.16667, 0.666667, 4.16667, 0.666667, 8.5)

@@ -439,7 +439,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 position = Vector2(1, 0)
 scale = Vector2(5, 5)
@@ -477,7 +477,7 @@ position = Vector2(-5, 5.4)
 rotation = 0.308896
 
 [node name="Gun" type="AnimatedSprite2D" parent="HandPivot/Hands/Gunpivot"]
-z_index = 1
+z_as_relative = false
 y_sort_enabled = true
 position = Vector2(-1.84843, -3.81881)
 sprite_frames = SubResource("SpriteFrames_7hfxl")
