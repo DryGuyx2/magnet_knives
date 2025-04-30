@@ -11,14 +11,14 @@ enum State {
 }
 
 @export var main_scene: Node2D
-@export var move_speed: int = 10000
+@export var move_speed: int = 20000
 @export var initial_state: State = State.IDLE
 @export var dash_speed: int = 30000
 @export var dash_duration: float = 1
 @export var gun_cooldown_time: float = 0.5
 @export var max_health: int = 2
 
-@onready var player_animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player_animations: AnimatedSprite2D = $Body
 @onready var hand_pivot: Node2D = $HandPivot
 @onready var gun_animations: AnimatedSprite2D = $HandPivot/Hands/Gunpivot/Gun
 @onready var gun_pivot: Node2D = $HandPivot/Hands/Gunpivot
@@ -141,9 +141,9 @@ var gun_on_cooldown = false
 
 func handle_gun(delta: float) -> void:
 	if cursor.global_position.x < global_position.x:
-		hand_pivot.scale.x = 1
-	elif cursor.global_position.x > global_position.x:
 		hand_pivot.scale.x = -1
+	elif cursor.global_position.x > global_position.x:
+		hand_pivot.scale.x = 1
 	
 	gun_animations.look_at(cursor.position)
 	

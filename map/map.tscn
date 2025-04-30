@@ -1,0 +1,218 @@
+[gd_scene load_steps=8 format=3 uid="uid://blae2l1n3abdw"]
+
+[ext_resource type="Texture2D" uid="uid://bjevwf2d5i6kn" path="res://map/floor.png" id="1_rh67i"]
+[ext_resource type="Texture2D" uid="uid://dcuodgfhh8w36" path="res://map/walls.png" id="2_74wa8"]
+[ext_resource type="Texture2D" uid="uid://vhnx16n83d5n" path="res://map/upward_walls.png" id="3_2lffu"]
+[ext_resource type="PackedScene" uid="uid://dncxffytej4b1" path="res://map/interior/chair.tscn" id="4_wuck5"]
+[ext_resource type="PackedScene" uid="uid://bg37h0hy1ean1" path="res://map/interior/table.tscn" id="5_s2jpb"]
+[ext_resource type="PackedScene" uid="uid://dt5n1d4ogv0d1" path="res://map/interior/food_buffet.tscn" id="6_4b86v"]
+[ext_resource type="PackedScene" uid="uid://rgwu6iqy6v7o" path="res://map/interior/fridge.tscn" id="7_065fe"]
+
+[node name="Map" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Floor" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_rh67i")
+
+[node name="OuterWalls" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/OuterWalls"]
+scale = Vector2(60, 60)
+polygon = PackedVector2Array(-8.43667, 3.11667, -8.43333, 1.44667, -7.51667, 1.44667, -7.51667, -3.31667, -9.48333, -3.31667, -9.48, -7.77, -0.55, -7.76667, -0.543333, -5.35, 2.41667, -5.35333, 2.42, -1.73333, 5.68333, -1.73333, 5.68333, 2.56667, 4.58333, 2.56667, 4.58667, 7.03667, 2.30333, 7.03667, 2.30667, 7.83667, -4.61667, 7.83667, -4.61667, 5.60333, -6.38333, 5.60333, -6.38333, 3.12, -8.4, 3.12, -8.41, 8.78667, 6.98667, 8.83333, 6.93667, -9.41, -9.78667, -9.41, -9.81333, 3.22333, -8.42333, 3.23)
+
+[node name="Island1" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/Island1"]
+position = Vector2(12.8, 258.4)
+scale = Vector2(23.79, 23.79)
+polygon = PackedVector2Array(-8.85246, -4.3884, 9.29802, -4.3884, 9.30643, 5.15343, 5.26272, 5.15343, 5.26272, 1.86633, -8.86087, 1.87474)
+
+[node name="Island2" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/Island2"]
+position = Vector2(-162.4, 10)
+scale = Vector2(30, 30)
+polygon = PackedVector2Array(-2.55333, 9.76, -2.55333, 4.8, -3.25333, 4.80667, -3.25333, -3.82, 8.88, -3.80667, 8.88, -9.66667, 4.31333, -9.66667, 4.32667, -6.96667, -8.25333, -6.96, -8.25333, 2.56, -4.78667, 2.56667, -4.78667, 5.90667, -5.98667, 5.90667, -5.98667, 9.76667)
+
+[node name="Walls" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_74wa8")
+
+[node name="UpwardWalls" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("3_2lffu")
+
+[node name="EatingHall" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ChairCluster" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Chair" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+position = Vector2(-1350, 2255)
+
+[node name="Chair2" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+position = Vector2(-1341, 2314)
+
+[node name="Chair3" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+position = Vector2(-1282, 2289)
+
+[node name="SittingPlace1" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+position = Vector2(-185, 77)
+
+[node name="Table" parent="EatingHall/SittingPlace1" instance=ExtResource("5_s2jpb")]
+position = Vector2(-884, 2099)
+
+[node name="Chair4" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+position = Vector2(-944, 2108)
+
+[node name="Chair5" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+position = Vector2(-810, 2152)
+rotation = 3.14159
+scale = Vector2(5, -5)
+
+[node name="Chair6" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+position = Vector2(-813, 2060)
+rotation = 3.14159
+scale = Vector2(5, -5)
+
+[node name="SittingPlace2" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+position = Vector2(-189, 93)
+
+[node name="Table2" parent="EatingHall/SittingPlace2" instance=ExtResource("5_s2jpb")]
+position = Vector2(-822, 1767)
+
+[node name="Chair" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+position = Vector2(-882, 1745)
+
+[node name="Chair2" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+position = Vector2(-885, 1791)
+
+[node name="Chair3" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+position = Vector2(-752, 1825)
+scale = Vector2(-5, 5)
+
+[node name="Chair4" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+position = Vector2(-752, 1728)
+scale = Vector2(-5, 5)
+
+[node name="SittingPlace3" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Table" parent="EatingHall/SittingPlace3" instance=ExtResource("5_s2jpb")]
+position = Vector2(-445, 1799)
+
+[node name="Chair" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+position = Vector2(-516, 1754)
+
+[node name="Chair2" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+position = Vector2(-518, 1856)
+scale = Vector2(-5, 5)
+
+[node name="Chair3" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+position = Vector2(-369, 1793)
+scale = Vector2(-5, 5)
+
+[node name="SittingPlace4" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Table" parent="EatingHall/SittingPlace4" instance=ExtResource("5_s2jpb")]
+position = Vector2(-417, 2059)
+
+[node name="Chair" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-481, 1997)
+
+[node name="Chair2" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-481, 2049)
+
+[node name="Chair3" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-481, 2130)
+
+[node name="Chair6" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-348, 2088)
+rotation = 3.14159
+scale = Vector2(5, -5)
+
+[node name="Chair4" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-348, 2139)
+scale = Vector2(-5, 5)
+
+[node name="Chair5" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+position = Vector2(-345, 2006)
+scale = Vector2(-5, 5)
+
+[node name="SittingPlace5" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Table" parent="EatingHall/SittingPlace5" instance=ExtResource("5_s2jpb")]
+position = Vector2(-101, 1986)
+
+[node name="Chair" parent="EatingHall/SittingPlace5" instance=ExtResource("4_wuck5")]
+position = Vector2(-170, 2032)
+
+[node name="Chair2" parent="EatingHall/SittingPlace5" instance=ExtResource("4_wuck5")]
+position = Vector2(-30, 1952)
+
+[node name="SittingPlace6" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Table" parent="EatingHall/SittingPlace6" instance=ExtResource("5_s2jpb")]
+position = Vector2(308, 2094)
+
+[node name="Chair2" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+position = Vector2(241, 2109)
+
+[node name="Chair3" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+position = Vector2(239, 2020)
+
+[node name="Chair4" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+position = Vector2(377, 2063)
+scale = Vector2(-5, 5)
+
+[node name="Chair5" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+position = Vector2(378, 2105)
+scale = Vector2(-5, 5)
+
+[node name="Chair" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+position = Vector2(242, 2161)
+
+[node name="SittingPlace7" type="Node2D" parent="EatingHall"]
+y_sort_enabled = true
+
+[node name="Chair2" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(224, 1823)
+
+[node name="Chair3" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(226, 1729)
+
+[node name="Chair4" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(354, 1736)
+scale = Vector2(-5, 5)
+
+[node name="Chair5" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(355, 1777)
+scale = Vector2(-5, 5)
+
+[node name="Chair6" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(356, 1868)
+scale = Vector2(-5, 5)
+
+[node name="Chair" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+position = Vector2(220, 1864)
+
+[node name="Table" parent="EatingHall/SittingPlace7" instance=ExtResource("5_s2jpb")]
+position = Vector2(289, 1799)
+
+[node name="FoodArea" type="Node2D" parent="EatingHall"]
+
+[node name="FoodBuffet" parent="EatingHall/FoodArea" instance=ExtResource("6_4b86v")]
+position = Vector2(-408, 1510)
+
+[node name="FoodBuffet2" parent="EatingHall/FoodArea" instance=ExtResource("6_4b86v")]
+position = Vector2(120, 1511)
+
+[node name="Fridge" parent="EatingHall/FoodArea" instance=ExtResource("7_065fe")]
+position = Vector2(561, 1508)

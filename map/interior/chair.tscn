@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dncxffytej4b1"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_g2ivl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwx2g"]
+atlas = ExtResource("1_g2ivl")
+region = Rect2(0, 0, 272, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1aga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwx2g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_in14x"]
+radius = 3.8
+height = 7.99998
+
+[node name="Chair" type="AnimatedSprite2D"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-287, 84)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_e1aga")
+offset = Vector2(-26.46, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0.200003, 5.96046e-08)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_in14x")

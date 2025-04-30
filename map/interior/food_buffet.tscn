@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt5n1d4ogv0d1"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_2o2at"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yct1q"]
+atlas = ExtResource("1_2o2at")
+region = Rect2(699, 0, 215, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02psq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yct1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt3lq"]
+size = Vector2(83.9, 12.6)
+
+[node name="FoodBuffet" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_02psq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-4.45, 7.7)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qt3lq")

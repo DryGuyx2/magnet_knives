@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://rgwu6iqy6v7o"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_4su66"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vpyj"]
+atlas = ExtResource("1_4su66")
+region = Rect2(1010, 0, 246, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11l5u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vpyj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bvvq"]
+size = Vector2(37, 10)
+
+[node name="Fridge" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_11l5u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_5bvvq")
