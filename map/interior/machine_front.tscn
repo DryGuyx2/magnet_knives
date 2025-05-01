@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1lbamyovyga4"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_3n322"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2d66"]
+atlas = ExtResource("1_3n322")
+region = Rect2(2255, 0, 245, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_544a2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2d66")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv7wb"]
+size = Vector2(6, 3)
+
+[node name="MachineFront" type="AnimatedSprite2D"]
+y_sort_enabled = true
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_544a2")
+offset = Vector2(0, -18.245)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(21, -21.2)
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(-9.52, 5.16, -7.52, 5.2, -7.52, 6, -5.08, 6, -5.08, 5.16, -2.92, 5.2, -2.92, 5.56, -2.32, 5.56, -2.28, 6.76, -1.12, 6.76, -1.12, 5.6, -0.28, 5.6, -0.28, 6.8, 0.92, 6.8, 0.92, 5.6, 1.68, 5.6, 1.68, 6.4, 6.72, 6.4, 6.72, 5.56, 7.32, 5.56, 7.32, 2.8, -2.88, 2.76, -2.88, 3.48, -9.56, 3.44)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(63.4, 1.3)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_pv7wb")

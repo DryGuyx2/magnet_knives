@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbbwwq10r28yo"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdr4snnxenj" path="res://map/interior/interior.png" id="1_teajm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blq5w"]
+atlas = ExtResource("1_teajm")
+region = Rect2(2600, 0, 235, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etv8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blq5w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ConveyorMachine" type="AnimatedSprite2D"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_etv8y")
+offset = Vector2(0, 44.915)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1.19209e-07, 45.2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+scale = Vector2(10, 10)
+polygon = PackedVector2Array(-8.94, 2.4, -8.54, 2.4, -8.54, 2.2, -8.46, 2.2, -8.44, 2.1, -7.44, 2.1, -7.44, 2.2, -7.16, 2.2, -7.16, 2.1, -6.96, 2.1, -6.94, 2.38, -6.36, 2.4, -6.36, 2.6, -5.96, 2.6, -5.96, 2.68, -6.04, 2.68, -6.04, 3.1, -5.44, 3.1, -5.44, 2.6, -4.04, 2.6, -4.04, 2.2, -3.64, 2.2, -3.64, 2.1, -0.34, 2.1, -0.34, 2.2, 0.14, 2.2, 0.14, 2.4, 0.56, 2.4, 0.56, 2.7, 3.46, 2.7, 3.64, 2.7, 3.64, 3, 4.26, 3, 4.26, 2.6, 4.26, 2.4, 4.34, 2.4, 4.34, 2.2, 4.76, 2.2, 4.76, 2.1, 7.34, 2.1, 7.34, 2.2, 7.66, 2.2, 7.66, 2.1, 7.74, 2.1, 7.74, 2, 7.96, 2, 7.96, 1.9, 8.06, 1.9, 8.06, 1.8, 8.16, 1.8, 8.16, -2.2, -8.98, -2.28)

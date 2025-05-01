@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blae2l1n3abdw"]
+[gd_scene load_steps=22 format=3 uid="uid://blae2l1n3abdw"]
 
 [ext_resource type="Texture2D" uid="uid://bjevwf2d5i6kn" path="res://map/floor.png" id="1_rh67i"]
 [ext_resource type="Texture2D" uid="uid://dcuodgfhh8w36" path="res://map/walls.png" id="2_74wa8"]
@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://dbutrhv6o2nol" path="res://map/interior/small_green_container.tscn" id="15_kwk4d"]
 [ext_resource type="PackedScene" uid="uid://bl752jfseeigh" path="res://map/interior/blue_containers.tscn" id="16_inspf"]
 [ext_resource type="PackedScene" uid="uid://bp6wqda50ac78" path="res://map/interior/green_stacked_containers.tscn" id="17_o341a"]
+[ext_resource type="PackedScene" uid="uid://dbbwwq10r28yo" path="res://map/interior/conveyor_machine.tscn" id="18_1m7pa"]
+[ext_resource type="PackedScene" uid="uid://b1lbamyovyga4" path="res://map/interior/machine_front.tscn" id="19_nxr36"]
+[ext_resource type="PackedScene" uid="uid://52o0gijyej76" path="res://map/interior/machine_side.tscn" id="20_qmvgb"]
+[ext_resource type="PackedScene" uid="uid://dgpcod24qtu5k" path="res://map/interior/machine_back.tscn" id="21_o1f5b"]
 
 [node name="Map" type="Node2D"]
 y_sort_enabled = true
@@ -271,3 +275,23 @@ position = Vector2(-2644, -1147)
 [node name="GreenStackedContainers" parent="StorageRoom" instance=ExtResource("17_o341a")]
 y_sort_enabled = true
 position = Vector2(-457, -1085)
+
+[node name="CentralArea" type="Node2D" parent="."]
+z_index = 2
+y_sort_enabled = true
+
+[node name="ConveyorMachine" parent="CentralArea" instance=ExtResource("18_1m7pa")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-850, -637)
+
+[node name="MachineFront" parent="CentralArea" instance=ExtResource("19_nxr36")]
+position = Vector2(-53, -404)
+
+[node name="MachineSide" parent="CentralArea" instance=ExtResource("20_qmvgb")]
+y_sort_enabled = true
+position = Vector2(1550, -29)
+
+[node name="MachineBack" parent="CentralArea" instance=ExtResource("21_o1f5b")]
+z_index = 1
+position = Vector2(9, 700)

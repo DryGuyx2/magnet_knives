@@ -14,7 +14,7 @@ script = ExtResource("1_02xko")
 [node name="Map" parent="." instance=ExtResource("6_giojb")]
 
 [node name="Player" parent="Map" node_paths=PackedStringArray("main_scene", "cursor") instance=ExtResource("1_2de56")]
-position = Vector2(-2047, -1375)
+position = Vector2(252, -346)
 main_scene = NodePath("../..")
 cursor = NodePath("../../Cursor")
 
