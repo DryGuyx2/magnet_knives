@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0y1tfccsxmn2"]
+[gd_scene load_steps=8 format=3 uid="uid://d0y1tfccsxmn2"]
 
 [ext_resource type="PackedScene" uid="uid://70xgaapne6i" path="res://player/player.tscn" id="1_2de56"]
 [ext_resource type="Script" path="res://main.gd" id="1_02xko"]
@@ -6,15 +6,18 @@
 [ext_resource type="Script" path="res://knives/simple/knife_spawner.gd" id="3_yo3c0"]
 [ext_resource type="PackedScene" uid="uid://do0tbabg2am0a" path="res://player/player_camera.tscn" id="5_rtuh2"]
 [ext_resource type="PackedScene" uid="uid://blae2l1n3abdw" path="res://map/map.tscn" id="6_giojb"]
+[ext_resource type="PackedScene" uid="uid://cbw577jjqhu0" path="res://screens/intro/intro_screen.tscn" id="7_ghrfa"]
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 y_sort_enabled = true
 script = ExtResource("1_02xko")
 
 [node name="Map" parent="." instance=ExtResource("6_giojb")]
+process_mode = 1
 
 [node name="Player" parent="Map" node_paths=PackedStringArray("main_scene", "cursor") instance=ExtResource("1_2de56")]
-position = Vector2(252, -346)
+position = Vector2(276, 205)
 main_scene = NodePath("../..")
 cursor = NodePath("../../Cursor")
 
@@ -25,9 +28,17 @@ script = ExtResource("3_yo3c0")
 
 [node name="Camera" parent="Map/Player" node_paths=PackedStringArray("player") instance=ExtResource("5_rtuh2")]
 z_index = 4
+z_as_relative = false
 scale = Vector2(0.2, 0.2)
 player = NodePath("..")
 
+[node name="IntroScreen" parent="Map/Player" instance=ExtResource("7_ghrfa")]
+process_mode = 3
+z_as_relative = false
+position = Vector2(0.200001, 3.00002)
+scale = Vector2(1.2, 1.2)
+
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
-z_index = 5
+process_mode = 3
+z_index = 6
 position = Vector2(-1079, -1385)
