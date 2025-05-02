@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_02xko"]
 [ext_resource type="PackedScene" uid="uid://bjotd0le1kirx" path="res://cursor/cursor.tscn" id="2_oxb3t"]
 [ext_resource type="Script" path="res://knives/simple/knife_spawner.gd" id="3_yo3c0"]
-[ext_resource type="PackedScene" uid="uid://do0tbabg2am0a" path="res://player/player_camera.tscn" id="5_rtuh2"]
+[ext_resource type="PackedScene" uid="uid://do0tbabg2am0a" path="res://player/player_camera/player_camera.tscn" id="5_rtuh2"]
 [ext_resource type="PackedScene" uid="uid://blae2l1n3abdw" path="res://map/map.tscn" id="6_giojb"]
 [ext_resource type="PackedScene" uid="uid://cbw577jjqhu0" path="res://screens/intro/intro_screen.tscn" id="7_ghrfa"]
 
