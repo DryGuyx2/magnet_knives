@@ -51,6 +51,7 @@ collision_layer = 0
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_xg0gb")
+kind = "jpeg"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 4.71239
@@ -75,5 +76,7 @@ shape = SubResource("CapsuleShape2D_nq1u3")
 position = Vector2(-16, -56)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bgj2e")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]

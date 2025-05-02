@@ -41,10 +41,10 @@ z_index = 7
 position = Vector2(1.2, -2.8)
 scale = Vector2(0.9, 0.9)
 
-[node name="KnifeSpawnerManager" type="Node2D" parent="Map" node_paths=PackedStringArray("player", "main_scene")]
+[node name="KnifeSpawnerManager" type="Node2D" parent="Map" node_paths=PackedStringArray("player", "spawn_node")]
 script = ExtResource("6_14686")
 player = NodePath("../Player")
-main_scene = NodePath("../..")
+spawn_node = NodePath("..")
 
 [node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(998, 195)
@@ -63,4 +63,5 @@ process_mode = 3
 z_index = 6
 position = Vector2(-1079, -1385)
 
+[connection signal="new_knife_discovered" from="Map/Player" to="." method="_on_player_new_knife_discovered"]
 [connection signal="intro_finished" from="Map/Player/KnifeIntro" to="." method="_on_knife_intro_intro_finished"]

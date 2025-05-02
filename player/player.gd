@@ -3,6 +3,7 @@ class_name Player
 
 signal dead
 signal hurt(health: int)
+signal new_knife_discovered(kind: String)
 
 enum State {
 	IDLE,
@@ -178,3 +179,9 @@ func damage(amount: int, knockback: Vector2) -> void:
 		queue_free()
 	
 	emit_signal("hurt", health)
+
+var discovered_knives = []
+func knife_entered_view(kind: String) -> void:
+	if kind not in discovered_knives:
+		discovered_knives.append(kind)
+		emit_signal("new_knife_discovered", kind)

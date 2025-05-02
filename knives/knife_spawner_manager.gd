@@ -2,7 +2,7 @@ extends Node2D
 class_name KnifeSpawnerManager
 
 @export var player: Player
-@export var main_scene: Main
+@export var spawn_node: Node2D
 
 @onready var spawners: Array = get_children()
 var off_screen_spawners: Array = []
@@ -12,7 +12,7 @@ var knife_types = ["jpeg", "simple", "walking"]
 func _ready() -> void:
 	for spawner in spawners:
 		spawner.player = player
-		spawner.main_scene = main_scene
+		spawner.spawn_node = spawn_node
 
 func _process(delta):
 	if Input.is_action_just_pressed("test_4"):

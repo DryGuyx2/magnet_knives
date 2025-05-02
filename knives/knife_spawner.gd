@@ -2,7 +2,7 @@ extends VisibleOnScreenNotifier2D
 class_name KnifeSpawner
 
 var player: Player
-var main_scene: Main
+var spawn_node: Node2D
 
 var KNIFE_SCENES = {
 	"simple": preload("res://knives/simple/simple_knife.tscn"),
@@ -14,4 +14,5 @@ func spawn(kind: String) -> void:
 	var knife = KNIFE_SCENES[kind].instantiate()
 	knife.player = player
 	knife.global_position = global_position
-	main_scene.add_child(knife)
+	knife.connect("entered_view", player.knife_entered_view)
+	spawn_node.add_child(knife)

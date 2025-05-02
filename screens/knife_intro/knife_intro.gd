@@ -13,7 +13,7 @@ func play_intro(kind: String) -> void:
 	play()
 
 const KNIFE_TEXTS: Dictionary = {
-	"walking": "He got feet???",
+	"walking": "He got legs???",
 	"simple": "Just an average knife",
 	"jpeg": "Darn it, wasn't a png",
 }

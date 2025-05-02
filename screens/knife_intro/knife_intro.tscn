@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cimn3s3enkmeh"]
+[gd_scene load_steps=23 format=3 uid="uid://cimn3s3enkmeh"]
 
 [ext_resource type="Texture2D" uid="uid://cutu6gdkio44h" path="res://screens/knife_intro/knife_intro.png" id="1_qqw0h"]
 [ext_resource type="Script" path="res://screens/knife_intro/knife_intro.gd" id="2_kyd7k"]
@@ -123,6 +123,9 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_k0n2o"]
 font = ExtResource("4_mr3of")
 
+[sub_resource type="LabelSettings" id="LabelSettings_pq3fn"]
+font = ExtResource("4_mr3of")
+
 [node name="KnifeIntro" type="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0)
 z_as_relative = false
@@ -157,5 +160,13 @@ offset_top = -69.0
 offset_right = -37.4
 offset_bottom = -46.0
 label_settings = SubResource("LabelSettings_k0n2o")
+
+[node name="NewKnife" type="Label" parent="."]
+offset_left = -46.6
+offset_top = 58.4
+offset_right = 111.4
+offset_bottom = 81.4
+text = "A new knife has appeared!"
+label_settings = SubResource("LabelSettings_pq3fn")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
