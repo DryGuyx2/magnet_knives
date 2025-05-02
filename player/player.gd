@@ -163,6 +163,9 @@ func handle_gun(delta: float) -> void:
 
 var knockback_buffer: Vector2 = Vector2.ZERO
 func damage(amount: int, knockback: Vector2) -> void:
+	if current_state == State.DASHING:
+		return
+	
 	health -= amount
 	knockback_buffer = knockback
 	
