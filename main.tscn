@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0y1tfccsxmn2"]
+[gd_scene load_steps=9 format=3 uid="uid://d0y1tfccsxmn2"]
 
 [ext_resource type="PackedScene" uid="uid://70xgaapne6i" path="res://player/player.tscn" id="1_2de56"]
 [ext_resource type="Script" path="res://main.gd" id="1_02xko"]
 [ext_resource type="PackedScene" uid="uid://bjotd0le1kirx" path="res://cursor/cursor.tscn" id="2_oxb3t"]
-[ext_resource type="Script" path="res://knives/simple/knife_spawner.gd" id="3_yo3c0"]
 [ext_resource type="PackedScene" uid="uid://do0tbabg2am0a" path="res://player/player_camera/player_camera.tscn" id="5_rtuh2"]
+[ext_resource type="Script" path="res://knives/knife_spawner_manager.gd" id="6_14686"]
 [ext_resource type="PackedScene" uid="uid://blae2l1n3abdw" path="res://map/map.tscn" id="6_giojb"]
 [ext_resource type="PackedScene" uid="uid://cbw577jjqhu0" path="res://screens/intro/intro_screen.tscn" id="7_ghrfa"]
+[ext_resource type="PackedScene" uid="uid://dtufak3e7cctv" path="res://knives/knife_spawner.tscn" id="7_stlfv"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -21,11 +22,6 @@ position = Vector2(276, 205)
 main_scene = NodePath("../..")
 cursor = NodePath("../../Cursor")
 
-[node name="KnifeSpawner" type="Node2D" parent="Map/Player"]
-position = Vector2(-49.2, -34.4)
-scale = Vector2(0.2, 0.2)
-script = ExtResource("3_yo3c0")
-
 [node name="Camera" parent="Map/Player" node_paths=PackedStringArray("player") instance=ExtResource("5_rtuh2")]
 z_index = 4
 z_as_relative = false
@@ -37,6 +33,16 @@ process_mode = 3
 z_as_relative = false
 position = Vector2(0.200001, 3.00002)
 scale = Vector2(1.2, 1.2)
+
+[node name="KnifeSpawnerManager" type="Node2D" parent="Map" node_paths=PackedStringArray("player", "main_scene")]
+script = ExtResource("6_14686")
+player = NodePath("../Player")
+main_scene = NodePath("../..")
+
+[node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+
+[node name="KnifeSpawner2" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(612, -667)
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
 process_mode = 3

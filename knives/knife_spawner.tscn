@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtufak3e7cctv"]
+
+[ext_resource type="Script" path="res://knives/knife_spawner.gd" id="1_ko2kt"]
+
+[node name="KnifeSpawner" type="VisibleOnScreenNotifier2D"]
+position = Vector2(-1094, 1057)
+script = ExtResource("1_ko2kt")

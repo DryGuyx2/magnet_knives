@@ -100,7 +100,7 @@ frame_progress = 0.968023
 script = ExtResource("2_daiou")
 
 [node name="StartButton" type="AnimatedSprite2D" parent="."]
-position = Vector2(-72.1667, -21.3333)
+position = Vector2(-75.1667, -45.8333)
 sprite_frames = SubResource("SpriteFrames_cnxeb")
 
 [node name="Area2D" type="Area2D" parent="StartButton"]
