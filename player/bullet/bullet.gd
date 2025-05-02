@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 
 
-func _on_body_entered(body: CharacterBody2D):
-	if body.has_method("damage"):
-		body.damage(damage, direction * knockback)
+func _on_area_entered(area: Area2D):
+	if area.get_parent().has_method("damage"):
+		area.get_parent().damage(damage, direction * knockback)
 	queue_free()

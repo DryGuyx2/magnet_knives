@@ -8,11 +8,12 @@ class_name Knife
 var player: Player
 
 @onready var attack_box: Area2D = $AttackBox
+@onready var hurt_box: Area2D = $HurtBox
 
 func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["physics"], true)
 	
-	set_collision_layer_value(Global.collision_layers["knife_detection"], true)
+	hurt_box.set_collision_layer_value(Global.collision_layers["knife_detection"], true)
 	attack_box.set_collision_mask_value(Global.collision_layers["player_detection"], true)
 
 var knockback_buffer: Vector2 = Vector2.ZERO

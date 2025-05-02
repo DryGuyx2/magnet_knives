@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xa6yoncb31i"]
+[gd_scene load_steps=6 format=3 uid="uid://b2xa6yoncb31i"]
 
 [ext_resource type="Script" path="res://knives/knife.gd" id="1_wlqoh"]
 [ext_resource type="Texture2D" uid="uid://uh23yypl4kxb" path="res://knives/simple/knife.png" id="2_b56qm"]
@@ -9,6 +9,9 @@ height = 38.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uisvj"]
 radius = 11.0454
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e18ul"]
+height = 48.0
 
 [node name="SimpleKnife" type="CharacterBody2D"]
 collision_layer = 0
@@ -32,5 +35,12 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_uisvj")
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-10, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e18ul")
 
 [connection signal="body_entered" from="AttackBox" to="." method="_on_area_2d_body_entered"]
