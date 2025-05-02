@@ -1,0 +1,161 @@
+[gd_scene load_steps=22 format=3 uid="uid://cimn3s3enkmeh"]
+
+[ext_resource type="Texture2D" uid="uid://cutu6gdkio44h" path="res://screens/knife_intro/knife_intro.png" id="1_qqw0h"]
+[ext_resource type="Script" path="res://screens/knife_intro/knife_intro.gd" id="2_kyd7k"]
+[ext_resource type="Texture2D" uid="uid://cdvbe0746m7jp" path="res://knives/walking/walking_knife.png" id="3_5hmut"]
+[ext_resource type="FontFile" uid="uid://bxeuhw65jk0fm" path="res://MedodicaRegular.otf" id="4_mr3of"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukaku"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(1300, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_277sd"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(1560, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2sa7"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(1820, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0jj2"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(2080, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxsvf"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(2340, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcdhi"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(2600, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5bwo"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(2860, 0, 260, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kkm3"]
+atlas = ExtResource("1_qqw0h")
+region = Rect2(3120, 0, 260, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwgfp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukaku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_277sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2sa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0jj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxsvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcdhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5bwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kkm3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu7wm"]
+atlas = ExtResource("3_5hmut")
+region = Rect2(0, 22, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xybel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu7wm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvua5"]
+atlas = ExtResource("3_5hmut")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mru7x"]
+atlas = ExtResource("3_5hmut")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayr8a"]
+atlas = ExtResource("3_5hmut")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lytq7"]
+atlas = ExtResource("3_5hmut")
+region = Rect2(66, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilnkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvua5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mru7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayr8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lytq7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0n2o"]
+font = ExtResource("4_mr3of")
+
+[node name="KnifeIntro" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0)
+z_as_relative = false
+position = Vector2(-2, 2)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_pwgfp")
+frame = 7
+frame_progress = 0.389614
+script = ExtResource("2_kyd7k")
+
+[node name="WalkingKnifeBody" type="AnimatedSprite2D" parent="."]
+z_index = 4
+position = Vector2(176, -44)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xybel")
+flip_h = true
+
+[node name="WalkingKnifeLegs" type="AnimatedSprite2D" parent="WalkingKnifeBody"]
+z_index = 10
+z_as_relative = false
+position = Vector2(-0.5, 3)
+sprite_frames = SubResource("SpriteFrames_ilnkt")
+frame = 1
+frame_progress = 0.133227
+
+[node name="WalkingKnifeEndPoint" type="Node2D" parent="."]
+position = Vector2(89.4, -28)
+
+[node name="Description" type="Label" parent="."]
+offset_left = -126.4
+offset_top = -69.0
+offset_right = -37.4
+offset_bottom = -46.0
+label_settings = SubResource("LabelSettings_k0n2o")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

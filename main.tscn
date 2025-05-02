@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0y1tfccsxmn2"]
+[gd_scene load_steps=10 format=3 uid="uid://d0y1tfccsxmn2"]
 
 [ext_resource type="PackedScene" uid="uid://70xgaapne6i" path="res://player/player.tscn" id="1_2de56"]
 [ext_resource type="Script" path="res://main.gd" id="1_02xko"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://blae2l1n3abdw" path="res://map/map.tscn" id="6_giojb"]
 [ext_resource type="PackedScene" uid="uid://cbw577jjqhu0" path="res://screens/intro/intro_screen.tscn" id="7_ghrfa"]
 [ext_resource type="PackedScene" uid="uid://dtufak3e7cctv" path="res://knives/knife_spawner.tscn" id="7_stlfv"]
+[ext_resource type="PackedScene" uid="uid://cimn3s3enkmeh" path="res://screens/knife_intro/knife_intro.tscn" id="9_wwwe5"]
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -34,6 +35,12 @@ z_as_relative = false
 position = Vector2(0.200001, 3.00002)
 scale = Vector2(1.2, 1.2)
 
+[node name="KnifeIntro" parent="Map/Player" instance=ExtResource("9_wwwe5")]
+process_mode = 3
+z_index = 7
+position = Vector2(1.2, -2.8)
+scale = Vector2(0.9, 0.9)
+
 [node name="KnifeSpawnerManager" type="Node2D" parent="Map" node_paths=PackedStringArray("player", "main_scene")]
 script = ExtResource("6_14686")
 player = NodePath("../Player")
@@ -55,3 +62,5 @@ position = Vector2(-2203, -1699)
 process_mode = 3
 z_index = 6
 position = Vector2(-1079, -1385)
+
+[connection signal="intro_finished" from="Map/Player/KnifeIntro" to="." method="_on_knife_intro_intro_finished"]
