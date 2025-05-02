@@ -66,6 +66,8 @@ radius = 3.0
 height = 21.2
 
 [node name="WalkingKnife" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(14, -17)
 scale = Vector2(5, 5)
 collision_layer = 0
