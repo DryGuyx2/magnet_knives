@@ -10,7 +10,6 @@ var player: Player
 @onready var attack_box: Area2D = $AttackBox
 
 func _ready() -> void:
-	set_collision_layer_value(Global.collision_layers["physics"], true)
 	set_collision_mask_value(Global.collision_layers["physics"], true)
 	
 	set_collision_layer_value(Global.collision_layers["knife_detection"], true)

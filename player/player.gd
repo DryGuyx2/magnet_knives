@@ -36,7 +36,6 @@ var health: int = max_health
 var current_state: State = initial_state 
 
 func _ready() -> void:
-	set_collision_layer_value(Global.collision_layers["physics"], true)
 	set_collision_mask_value(Global.collision_layers["physics"], true)
 	
 	set_collision_layer_value(Global.collision_layers["player_detection"], true)
