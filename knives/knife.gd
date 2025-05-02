@@ -30,6 +30,6 @@ func damage(amount: int, knockback: Vector2) -> void:
 	if health < 1:
 		queue_free()
 
-func _on_attack_box_body_entered(body: CharacterBody2D) -> void:
-	if body.has_method("damage"):
-		body.damage(attack, (player.global_position - global_position).normalized() * knockback)
+func _on_attack_box_area_entered(area: Area2D) -> void:
+	if area.get_parent().has_method("damage"):
+		area.get_parent().damage(attack, (player.global_position - global_position).normalized() * knockback)

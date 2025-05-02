@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://70xgaapne6i"]
+[gd_scene load_steps=63 format=3 uid="uid://70xgaapne6i"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://bu3yfit7x3ued" path="res://player/player_dodge.png" id="2_4e8ne"]
@@ -438,6 +438,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0xq8"]
+radius = 2.6
+height = 15.2
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 y_sort_enabled = true
@@ -487,3 +491,11 @@ flip_v = true
 
 [node name="Muzzle" type="Node2D" parent="HandPivot/Hands/Gunpivot/Gun"]
 position = Vector2(5.22537, 1.90145)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(5.96046e-08, -5.4)
+shape = SubResource("CapsuleShape2D_l0xq8")
