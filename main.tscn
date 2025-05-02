@@ -40,9 +40,16 @@ player = NodePath("../Player")
 main_scene = NodePath("../..")
 
 [node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(998, 195)
 
 [node name="KnifeSpawner2" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
-position = Vector2(612, -667)
+position = Vector2(-2082, 644)
+
+[node name="KnifeSpawner3" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-745, 1927)
+
+[node name="KnifeSpawner4" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-2203, -1699)
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
 process_mode = 3
