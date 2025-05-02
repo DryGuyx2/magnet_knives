@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2btqnfpr568w"]
+
+[ext_resource type="Script" path="res://knives/walking/walking_knife.gd" id="1_avirx"]
+[ext_resource type="Texture2D" uid="uid://cdvbe0746m7jp" path="res://knives/walking/walking_knife.png" id="2_mt7vf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6on23"]
+atlas = ExtResource("2_mt7vf")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8neji"]
+atlas = ExtResource("2_mt7vf")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omr8t"]
+atlas = ExtResource("2_mt7vf")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcjaw"]
+atlas = ExtResource("2_mt7vf")
+region = Rect2(66, 0, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epnho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6on23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8neji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omr8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcjaw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsv8c"]
+atlas = ExtResource("2_mt7vf")
+region = Rect2(0, 22, 22, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxwsr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsv8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_co07t"]
+radius = 3.16228
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aewaj"]
+radius = 3.0
+height = 14.0
+
+[node name="WalkingKnife" type="CharacterBody2D"]
+position = Vector2(14, -17)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_avirx")
+
+[node name="Legs" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.8, 3.4)
+sprite_frames = SubResource("SpriteFrames_epnho")
+frame = 3
+frame_progress = 0.0656931
+flip_h = true
+
+[node name="Body" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.8, 3.4)
+sprite_frames = SubResource("SpriteFrames_oxwsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.8, 4.4)
+shape = SubResource("CircleShape2D_co07t")
+
+[node name="AttackBox" type="Area2D" parent="."]
+position = Vector2(-2.8, 3.4)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_aewaj")
