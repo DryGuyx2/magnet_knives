@@ -30,6 +30,7 @@ var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 
 var move_direction: Vector2 = Vector2.ZERO 
 var last_moved_direction: Vector2 = Vector2.LEFT
+var dash_direction: Vector2 = Vector2.ZERO
 
 var health: int = max_health
 var current_state: State = initial_state 
@@ -51,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	elif current_state == State.IDLE:
 		velocity = knockback_buffer * delta 
 	elif current_state == State.DASHING:
-		velocity = move_direction * dash_speed * delta
+		velocity = dash_direction * dash_speed * delta
 		dash_time_left -= delta
 		if dash_time_left <= 0:
 			exit_dash()
@@ -65,6 +66,14 @@ func engage_dash() -> void:
 	hands.visible = false
 	dash_time_left = dash_duration
 	current_state = State.DASHING
+	dash_direction = move_direction
+	
+	var string_dash_direction = direction_to_string(dash_direction)
+	player_animations.flip_h = string_dash_direction == "right"
+	if string_dash_direction in ["left", "right"]:
+		string_dash_direction = "sideways"
+		
+	player_animations.play("dash_%s" % string_dash_direction)
 
 func exit_dash() -> void:
 	hands.visible = true
@@ -83,6 +92,9 @@ func update_state() -> void:
 	current_state = State.IDLE
 
 func handle_animations() -> void:
+	if current_state == State.DASHING:
+		return
+	
 	var mouse_direction = get_mouse_string_direction()
 	
 	player_animations.flip_h = mouse_direction == "right"
@@ -96,13 +108,6 @@ func handle_animations() -> void:
 		player_animations.play("moving_%s" % mouse_direction)
 	elif current_state == State.IDLE:
 		player_animations.play("idle_%s" % mouse_direction)
-	elif current_state == State.DASHING:
-		var dash_direction = direction_to_string(move_direction)
-		player_animations.flip_h = dash_direction == "right"
-		if dash_direction in ["left", "right"]:
-			dash_direction = "sideways"
-		
-		player_animations.play("dash_%s" % dash_direction)
 
 func get_mouse_string_direction() -> String:
 	var mouse_position = get_local_mouse_position()
