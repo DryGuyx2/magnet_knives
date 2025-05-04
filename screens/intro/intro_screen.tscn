@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbw577jjqhu0"]
+[gd_scene load_steps=18 format=3 uid="uid://cbw577jjqhu0"]
 
 [ext_resource type="Texture2D" uid="uid://0nyrnogrx10d" path="res://screens/intro/start_screen.png" id="1_rlr2q"]
 [ext_resource type="Script" path="res://screens/intro/intro_screen.gd" id="2_daiou"]
 [ext_resource type="Texture2D" uid="uid://x03v6vyf333d" path="res://screens/intro/start_button.png" id="3_wivyy"]
 [ext_resource type="Texture2D" uid="uid://bxwq22ycw2f1r" path="res://screens/intro/keys.png" id="4_srau4"]
+[ext_resource type="Texture2D" uid="uid://bg6wnkj7hthod" path="res://screens/intro/cartoon.png" id="5_33bi7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0rgs"]
 atlas = ExtResource("1_rlr2q")
@@ -114,6 +115,16 @@ shape = SubResource("RectangleShape2D_bovpq")
 position = Vector2(-74.6667, 6.16667)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_srau4")
+
+[node name="Cartoon" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 30
+position = Vector2(127.167, 0.166667)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("5_33bi7")
+
+[node name="CartoonEndPosition" type="Node2D" parent="."]
+position = Vector2(-125.5, 0.167)
 
 [connection signal="mouse_entered" from="StartButton/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="StartButton/Area2D" to="." method="_on_area_2d_mouse_exited"]
