@@ -104,6 +104,7 @@ func handle_animations() -> void:
 		mouse_direction = "sideways"
 	
 	gun_animations.z_index = int(mouse_direction == "up") + 1
+	hands.z_index = int(mouse_direction != "up") + 2
 	
 	if current_state == State.MOVING:
 		player_animations.play("moving_%s" % mouse_direction)

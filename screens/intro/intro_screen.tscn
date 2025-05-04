@@ -101,7 +101,7 @@ frame_progress = 0.968023
 script = ExtResource("2_daiou")
 
 [node name="StartButton" type="AnimatedSprite2D" parent="."]
-position = Vector2(-74, -45.8333)
+position = Vector2(-73.6667, -37.3333)
 sprite_frames = SubResource("SpriteFrames_cnxeb")
 
 [node name="Area2D" type="Area2D" parent="StartButton"]
@@ -111,7 +111,7 @@ position = Vector2(0, 0.0833321)
 shape = SubResource("RectangleShape2D_bovpq")
 
 [node name="Keys" type="Sprite2D" parent="."]
-position = Vector2(-78, 23.8333)
+position = Vector2(-74.6667, 6.16667)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_srau4")
 

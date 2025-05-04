@@ -459,7 +459,7 @@ gun_cooldown_time = 0.2
 y_sort_enabled = true
 position = Vector2(0, -9.53674e-07)
 sprite_frames = SubResource("SpriteFrames_eyslh")
-animation = &"dash_down"
+animation = &"dash_up"
 offset = Vector2(0, -8.395)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -473,6 +473,7 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="Hands" type="AnimatedSprite2D" parent="HandPivot"]
+z_as_relative = false
 y_sort_enabled = true
 position = Vector2(0, 5.6)
 sprite_frames = SubResource("SpriteFrames_7jdic")
