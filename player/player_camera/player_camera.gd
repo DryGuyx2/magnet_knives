@@ -9,13 +9,17 @@ signal difficulty_increase
 @onready var time = $Time
 var game_time = 0
 
-var health_hud_levels = ["empty", "half", "full"]
+var health_hud_levels: Array = ["empty", "half", "full"]
+var increased_difficulty: bool = false
+var elapsed_difficulty_time: float = 0
 
 func _process(delta: float) -> void:
 	game_time += delta
+	elapsed_difficulty_time += delta
 	time.text = format_time()
 	
-	if int(game_time) % 60 == 0:
+	if elapsed_difficulty_time >= 60:
+		elapsed_difficulty_time = 0
 		emit_signal("difficulty_increase")
 
 func _ready() -> void:

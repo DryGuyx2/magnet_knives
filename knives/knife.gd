@@ -39,7 +39,7 @@ func damage(amount: int, knockback: Vector2) -> void:
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
 	if area.get_parent().has_method("damage"):
-		area.get_parent().damage(attack, (player.global_position - global_position).normalized() * knockback)
+		area.get_parent().damage(attack, (player.global_position - global_position).normalized() * knockback, kind)
 
 func _on_screen_entered() -> void:
 	emit_signal("entered_view", kind)

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://knives/knife_spawner_manager.gd" id="6_14686"]
 [ext_resource type="PackedScene" uid="uid://blae2l1n3abdw" path="res://map/map.tscn" id="6_giojb"]
 [ext_resource type="PackedScene" uid="uid://cbw577jjqhu0" path="res://screens/intro/intro_screen.tscn" id="7_ghrfa"]
-[ext_resource type="PackedScene" uid="uid://ojnmeh3ln77a" path="res://death_screen.tscn" id="7_jsw6v"]
+[ext_resource type="PackedScene" uid="uid://b3w6yu6nbhi7v" path="res://death_screen.tscn" id="7_jsw6v"]
 [ext_resource type="PackedScene" uid="uid://dtufak3e7cctv" path="res://knives/knife_spawner.tscn" id="7_stlfv"]
 [ext_resource type="PackedScene" uid="uid://cimn3s3enkmeh" path="res://screens/knife_intro/knife_intro.tscn" id="9_wwwe5"]
 
