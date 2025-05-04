@@ -12,6 +12,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["knife_detection"], true)
+	set_collision_mask_value(Global.collision_layers["physics"], true)
 
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
@@ -20,4 +21,8 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D):
 	if area.get_parent().has_method("damage"):
 		area.get_parent().damage(damage, direction * knockback)
+	queue_free()
+
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	queue_free()
