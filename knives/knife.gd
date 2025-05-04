@@ -16,8 +16,9 @@ var player: Player
 @onready var on_screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 func _ready() -> void:
+	z_index = 3
 	on_screen_notifier.connect("screen_entered", _on_screen_entered)
-	set_collision_mask_value(Global.collision_layers["physics"], true)
+	set_collision_mask_value(Global.collision_layers["physics_walls_only"], true)
 	
 	hurt_box.set_collision_layer_value(Global.collision_layers["knife_detection"], true)
 	attack_box.set_collision_mask_value(Global.collision_layers["player_detection"], true)
