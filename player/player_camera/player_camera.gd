@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 	var seconds = int(game_time)
 	var minutes = (seconds/60)
 	seconds -= minutes * 60
+	if len(str(seconds)) == 1:
+		time.text = "%s:0%s" % [minutes, seconds]
+		return
 	time.text = "%s:%s" % [minutes, seconds]
 
 func _ready() -> void:
