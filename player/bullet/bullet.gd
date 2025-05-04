@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["knife_detection"], true)
-	set_collision_mask_value(Global.collision_layers["physics"], true)
+	set_collision_mask_value(Global.collision_layers["physics_walls_only"], true)
 
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta

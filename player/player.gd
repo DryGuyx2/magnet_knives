@@ -57,7 +57,6 @@ func _physics_process(delta: float) -> void:
 			if not played_step:
 				step_sound.play()
 				played_step = true
-				print("AAA")
 		else:
 			played_step = false
 	elif current_state == State.IDLE:
