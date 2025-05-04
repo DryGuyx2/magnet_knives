@@ -34,7 +34,8 @@ var last_moved_direction: Vector2 = Vector2.LEFT
 var dash_direction: Vector2 = Vector2.ZERO
 
 var health: int = max_health
-var current_state: State = initial_state 
+var current_state: State = initial_state
+var invincible: bool = false
 
 func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["physics"], true)
@@ -168,11 +169,12 @@ func handle_gun(delta: float) -> void:
 
 var knockback_buffer: Vector2 = Vector2.ZERO
 func damage(amount: int, knockback: Vector2, knife_kind) -> void:
-	if current_state == State.DASHING:
+	if current_state == State.DASHING or invincible:
 		return
 	
 	health -= amount
 	knockback_buffer = knockback
+	$DamageCooldown.start()
 	
 	if health <= 0:
 		emit_signal("dead", knife_kind)
@@ -188,3 +190,6 @@ func knife_entered_view(kind: String) -> void:
 var knives_killed = 0
 func knife_killed() -> void:
 	knives_killed += 1
+
+func _on_damage_cooldown_timeout():
+	invincible = false

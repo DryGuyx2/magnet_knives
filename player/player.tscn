@@ -502,3 +502,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(5.96046e-08, -5.4)
 shape = SubResource("CapsuleShape2D_l0xq8")
+
+[node name="DamageCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
