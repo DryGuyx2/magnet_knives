@@ -33,10 +33,20 @@ func spawn_knife() -> void:
 		if not spawner.is_on_screen():
 			off_screen_spawners.append(spawner)
 	
-	var chosen_spawner = off_screen_spawners.pick_random()
-	if not chosen_spawner:
-		return
+	off_screen_spawners.sort_custom(distance_from_player)
+	var top_3_spawners = [off_screen_spawners[0], off_screen_spawners[1], off_screen_spawners[2]]
+	
+	var chosen_spawner = top_3_spawners.pick_random()
 	chosen_spawner.spawn(knife_types.pick_random())
 
 func _on_camera_difficulty_increase() -> void:
 	difficulty += difficulty_increase
+
+func distance_from_player(spawner_a: VisibleOnScreenNotifier2D, spawner_b: VisibleOnScreenNotifier2D) -> int:
+	var distance_a = spawner_a.global_position - player.global_position
+	var total_distance_a = distance_a.abs().x + distance_a.abs().y
+	
+	var distance_b = spawner_b.global_position - player.global_position
+	var total_distance_b = distance_b.abs().x + distance_b.abs().y
+	
+	return total_distance_a < total_distance_b

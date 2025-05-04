@@ -52,17 +52,37 @@ player = NodePath("../Player")
 spawn_node = NodePath("..")
 difficulty_increase = 3
 
-[node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
-position = Vector2(998, 195)
+[node name="Spawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-1013, 78)
 
-[node name="KnifeSpawner2" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+[node name="Spawner2" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(-2082, 644)
 
-[node name="KnifeSpawner3" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+[node name="Spawner3" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(-745, 1927)
 
-[node name="KnifeSpawner4" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+[node name="Spawner4" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(-2203, -1699)
+
+[node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+
+[node name="KnifeSpawner2" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-1949, 629)
+
+[node name="KnifeSpawner3" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(1250, 1232)
+
+[node name="KnifeSpawner4" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-2665, -1709)
+
+[node name="KnifeSpawner5" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(639, -1475)
+
+[node name="KnifeSpawner6" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-1418, -2023)
+
+[node name="KnifeSpawner7" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
+position = Vector2(-1121, 33)
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
 process_mode = 3
