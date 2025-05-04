@@ -65,12 +65,15 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Chair" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-1350, 2255)
 
 [node name="Chair2" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-1341, 2314)
 
 [node name="Chair3" parent="EatingHall/ChairCluster" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-1282, 2289)
 
 [node name="SittingPlace1" type="Node2D" parent="EatingHall"]
@@ -78,17 +81,21 @@ y_sort_enabled = true
 position = Vector2(-185, 77)
 
 [node name="Table" parent="EatingHall/SittingPlace1" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(-884, 2099)
 
 [node name="Chair4" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-944, 2108)
 
 [node name="Chair5" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-810, 2152)
 rotation = 3.14159
 scale = Vector2(5, -5)
 
 [node name="Chair6" parent="EatingHall/SittingPlace1" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-813, 2060)
 rotation = 3.14159
 scale = Vector2(5, -5)
@@ -98,19 +105,24 @@ y_sort_enabled = true
 position = Vector2(-189, 93)
 
 [node name="Table2" parent="EatingHall/SittingPlace2" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(-822, 1767)
 
 [node name="Chair" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-882, 1745)
 
 [node name="Chair2" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-885, 1791)
 
 [node name="Chair3" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-752, 1825)
 scale = Vector2(-5, 5)
 
 [node name="Chair4" parent="EatingHall/SittingPlace2" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-752, 1728)
 scale = Vector2(-5, 5)
 
@@ -118,16 +130,20 @@ scale = Vector2(-5, 5)
 y_sort_enabled = true
 
 [node name="Table" parent="EatingHall/SittingPlace3" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(-445, 1799)
 
 [node name="Chair" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-516, 1754)
 
 [node name="Chair2" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-518, 1856)
 scale = Vector2(-5, 5)
 
 [node name="Chair3" parent="EatingHall/SittingPlace3" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-369, 1793)
 scale = Vector2(-5, 5)
 
@@ -135,27 +151,34 @@ scale = Vector2(-5, 5)
 y_sort_enabled = true
 
 [node name="Table" parent="EatingHall/SittingPlace4" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(-417, 2059)
 
 [node name="Chair" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-481, 1997)
 
 [node name="Chair2" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-481, 2049)
 
 [node name="Chair3" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-481, 2130)
 
 [node name="Chair6" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-348, 2088)
 rotation = 3.14159
 scale = Vector2(5, -5)
 
 [node name="Chair4" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-348, 2139)
 scale = Vector2(-5, 5)
 
 [node name="Chair5" parent="EatingHall/SittingPlace4" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-345, 2006)
 scale = Vector2(-5, 5)
 
@@ -163,62 +186,78 @@ scale = Vector2(-5, 5)
 y_sort_enabled = true
 
 [node name="Table" parent="EatingHall/SittingPlace5" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(-101, 1986)
 
 [node name="Chair" parent="EatingHall/SittingPlace5" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-170, 2032)
 
 [node name="Chair2" parent="EatingHall/SittingPlace5" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(-30, 1952)
 
 [node name="SittingPlace6" type="Node2D" parent="EatingHall"]
 y_sort_enabled = true
 
 [node name="Table" parent="EatingHall/SittingPlace6" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(308, 2094)
 
 [node name="Chair2" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(241, 2109)
 
 [node name="Chair3" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(239, 2020)
 
 [node name="Chair4" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(377, 2063)
 scale = Vector2(-5, 5)
 
 [node name="Chair5" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(378, 2105)
 scale = Vector2(-5, 5)
 
 [node name="Chair" parent="EatingHall/SittingPlace6" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(242, 2161)
 
 [node name="SittingPlace7" type="Node2D" parent="EatingHall"]
 y_sort_enabled = true
 
 [node name="Chair2" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(224, 1823)
 
 [node name="Chair3" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(226, 1729)
 
 [node name="Chair4" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(354, 1736)
 scale = Vector2(-5, 5)
 
 [node name="Chair5" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(355, 1777)
 scale = Vector2(-5, 5)
 
 [node name="Chair6" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(356, 1868)
 scale = Vector2(-5, 5)
 
 [node name="Chair" parent="EatingHall/SittingPlace7" instance=ExtResource("4_wuck5")]
+z_index = 0
 position = Vector2(220, 1864)
 
 [node name="Table" parent="EatingHall/SittingPlace7" instance=ExtResource("5_s2jpb")]
+z_index = 0
 position = Vector2(289, 1799)
 
 [node name="FoodArea" type="Node2D" parent="EatingHall"]
