@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://70xgaapne6i"]
+[gd_scene load_steps=67 format=3 uid="uid://70xgaapne6i"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://bu3yfit7x3ued" path="res://player/player_dodge.png" id="2_4e8ne"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bycpt28gdtwef" path="res://player/gun.png" id="3_wy43n"]
 [ext_resource type="AudioStream" uid="uid://dm3nqrwns5ljm" path="res://player/gunfire.mp3" id="6_0ey6e"]
 [ext_resource type="AudioStream" uid="uid://l07nw7ewn4hw" path="res://player/player_step.mp3" id="7_fpkag"]
+[ext_resource type="AudioStream" uid="uid://ccdt3krs8ev5m" path="res://player/hurt.wav" id="8_eojox"]
+[ext_resource type="AudioStream" uid="uid://cyophgxk3eitn" path="res://player/dash.wav" id="9_n42li"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbam0"]
 atlas = ExtResource("2_4e8ne")
@@ -461,7 +463,7 @@ gun_cooldown_time = 0.2
 y_sort_enabled = true
 position = Vector2(0, -9.53674e-07)
 sprite_frames = SubResource("SpriteFrames_eyslh")
-animation = &"moving_down"
+animation = &"dash_down"
 offset = Vector2(0, -8.395)
 
 [node name="HandPivot" type="Node2D" parent="Body"]
@@ -516,5 +518,11 @@ shape = SubResource("CapsuleShape2D_l0xq8")
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fpkag")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_eojox")
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_n42li")
 
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

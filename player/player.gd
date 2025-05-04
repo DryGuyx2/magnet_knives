@@ -78,6 +78,7 @@ func engage_dash() -> void:
 	current_state = State.DASHING
 	dash_direction = move_direction
 	
+	$Dash.play()
 	var string_dash_direction = direction_to_string(dash_direction)
 	player_animations.flip_h = string_dash_direction == "right"
 	if string_dash_direction in ["left", "right"]:
@@ -181,7 +182,7 @@ func handle_gun(delta: float) -> void:
 	if gun_cooldown_time_left <= 0:
 		gun_on_cooldown = false
 	
-	if Input.is_action_pressed("shoot") and not gun_on_cooldown:
+	if Input.is_action_pressed("shoot") and not gun_on_cooldown and not current_state == State.DASHING:
 		gun_animations.play()
 		$Body/HandPivot/Hands/Gunpivot/Gun/GunFire.play()
 		var bullet = BULLET_SCENE.instantiate()
@@ -199,6 +200,7 @@ func damage(amount: int, knockback: Vector2, knife_kind) -> void:
 	health -= amount
 	knockback_buffer = knockback
 	$DamageCooldown.start()
+	$Hurt.play()
 	invincible = true
 	
 	if health <= 0:
