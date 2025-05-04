@@ -6,4 +6,3 @@ class_name JpegKnife
 func damage(amount, knockback) -> void:
 	animation_component.play("stage_%s" % (health - 1))
 	super.damage(amount, knockback)
-	

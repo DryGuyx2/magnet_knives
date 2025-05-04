@@ -7,7 +7,13 @@ func _ready() -> void:
 	set_collision_mask_value(Global.collision_layers["physics_walls_only"], false)
 	set_collision_mask_value(Global.collision_layers["physics"], true)
 	z_index = 1
+	#$Step.play()
 
 func _process(delta: float) -> void:
 	$Legs.global_rotation = 0
 	$Legs.flip_h = (player.global_position - global_position).x > 0
+
+
+func _on_step_finished() -> void:
+	#$Step.play()
+	pass

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://do8yyqd26qenw"]
+[gd_scene load_steps=11 format=3 uid="uid://do8yyqd26qenw"]
 
 [ext_resource type="Script" path="res://knives/jpeg/jpeg_knife.gd" id="1_xg0gb"]
 [ext_resource type="Texture2D" uid="uid://b38i6i1d2jen8" path="res://knives/jpeg/jpeg_knife_stage1.jpg" id="2_pkpt6"]
 [ext_resource type="Texture2D" uid="uid://b5wsa4d4cj8ys" path="res://knives/jpeg/jpeg_knife_stage2.jpg" id="3_0egwg"]
 [ext_resource type="Texture2D" uid="uid://pamk6cfnkcj0" path="res://knives/jpeg/jpeg_knife_stage3.jpg" id="4_23flk"]
+[ext_resource type="AudioStream" uid="uid://bio3ksbgti3n4" path="res://knives/knife_attack.mp3" id="5_lxs66"]
+[ext_resource type="AudioStream" uid="uid://bmir1nquda6vp" path="res://knives/knife_death.mp3" id="6_ovkgg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ene3i"]
 animations = [{
@@ -79,5 +81,12 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bgj2e")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lxs66")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ovkgg")
+volume_db = 24.0
 
 [connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]

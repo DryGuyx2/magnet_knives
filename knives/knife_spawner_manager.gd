@@ -3,15 +3,15 @@ class_name KnifeSpawnerManager
 
 @export var player: Player
 @export var spawn_node: Node2D
-@export var difficulty_increase: int = 1
-@export var knife_spawn_time: float = 10
+@export var difficulty_increase: int = 3
+@export var knife_spawn_time: float = 5
 
 @onready var spawners: Array = get_children()
 var off_screen_spawners: Array = []
 
 var knife_types = ["jpeg", "simple", "walking"]
 
-var difficulty = 1
+var difficulty = 6
 
 func _ready() -> void:
 	for spawner in spawners:

@@ -1,10 +1,12 @@
-[gd_scene load_steps=63 format=3 uid="uid://70xgaapne6i"]
+[gd_scene load_steps=65 format=3 uid="uid://70xgaapne6i"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vagyu"]
 [ext_resource type="Texture2D" uid="uid://bu3yfit7x3ued" path="res://player/player_dodge.png" id="2_4e8ne"]
 [ext_resource type="Texture2D" uid="uid://cgj46vohllpt5" path="res://player/player.png" id="2_fis4v"]
 [ext_resource type="Texture2D" uid="uid://x6rk4r0f1k0c" path="res://player/hands.png" id="3_1utux"]
 [ext_resource type="Texture2D" uid="uid://bycpt28gdtwef" path="res://player/gun.png" id="3_wy43n"]
+[ext_resource type="AudioStream" uid="uid://dm3nqrwns5ljm" path="res://player/gunfire.mp3" id="6_0ey6e"]
+[ext_resource type="AudioStream" uid="uid://l07nw7ewn4hw" path="res://player/player_step.mp3" id="7_fpkag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbam0"]
 atlas = ExtResource("2_4e8ne")
@@ -459,7 +461,7 @@ gun_cooldown_time = 0.2
 y_sort_enabled = true
 position = Vector2(0, -9.53674e-07)
 sprite_frames = SubResource("SpriteFrames_eyslh")
-animation = &"dash_up"
+animation = &"moving_down"
 offset = Vector2(0, -8.395)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -496,6 +498,11 @@ flip_v = true
 [node name="Muzzle" type="Node2D" parent="HandPivot/Hands/Gunpivot/Gun"]
 position = Vector2(5.22537, 1.90145)
 
+[node name="GunFire" type="AudioStreamPlayer" parent="HandPivot/Hands/Gunpivot/Gun"]
+stream = ExtResource("6_0ey6e")
+volume_db = 24.0
+max_polyphony = 3
+
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
@@ -505,5 +512,8 @@ position = Vector2(5.96046e-08, -5.4)
 shape = SubResource("CapsuleShape2D_l0xq8")
 
 [node name="DamageCooldown" type="Timer" parent="."]
+
+[node name="Step" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fpkag")
 
 [connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

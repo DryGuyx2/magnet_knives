@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://b3w6yu6nbhi7v"]
 
-[ext_resource type="Texture2D" path="res://screens/death_screen/black_square.png" id="1_ef7sb"]
+[ext_resource type="Texture2D" uid="uid://cxbflfnrqar81" path="res://screens/death_screen/black_square.png" id="1_ef7sb"]
 [ext_resource type="Script" path="res://screens/death_screen/death_screen.gd" id="1_io356"]
-[ext_resource type="Texture2D" path="res://screens/death_screen/player_death_animation.png" id="2_2racl"]
-[ext_resource type="Texture2D" path="res://screens/death_screen/death_stats.png" id="2_ydl1w"]
+[ext_resource type="Texture2D" uid="uid://dimtsr35y7cfq" path="res://screens/death_screen/player_death_animation.png" id="2_2racl"]
+[ext_resource type="Texture2D" uid="uid://ec6a8cchqnyr" path="res://screens/death_screen/death_stats.png" id="2_ydl1w"]
 [ext_resource type="FontFile" uid="uid://bxeuhw65jk0fm" path="res://MedodicaRegular.otf" id="4_5fmab"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wj27s"]

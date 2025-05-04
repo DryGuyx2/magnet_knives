@@ -15,6 +15,8 @@ var player: Player
 @onready var hurt_box: Area2D = $HurtBox
 @onready var on_screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
+var dead: bool = false
+
 func _ready() -> void:
 	z_index = 3
 	on_screen_notifier.connect("screen_entered", _on_screen_entered)
@@ -25,22 +27,38 @@ func _ready() -> void:
 
 var knockback_buffer: Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	look_at(player.global_position)
 	velocity = (player.global_position - global_position).normalized() * move_speed * delta + knockback_buffer * delta
 	knockback_buffer = lerp(knockback_buffer, Vector2.ZERO, 0.1)
 	move_and_slide()
 
 func damage(amount: int, knockback: Vector2) -> void:
+	if dead:
+		return
 	health -= amount
 	knockback_buffer = knockback
 	
 	if health < 1:
 		emit_signal("killed")
-		queue_free()
+		dead = true
+		$Death.play()
+		var death_fade = create_tween()
+		death_fade.tween_property(self, "modulate:a", 0, 0.5)
+		death_fade.tween_callback(remove)
+
+func remove() -> void:
+	queue_free()
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
+	if dead:
+		return
 	if area.get_parent().has_method("damage"):
+		$Attack.play()
 		area.get_parent().damage(attack, (player.global_position - global_position).normalized() * knockback, kind)
 
 func _on_screen_entered() -> void:
+	if dead:
+		return
 	emit_signal("entered_view", kind)

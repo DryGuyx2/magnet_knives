@@ -50,7 +50,6 @@ z_index = 5
 script = ExtResource("6_14686")
 player = NodePath("../Player")
 spawn_node = NodePath("..")
-difficulty_increase = 3
 
 [node name="Spawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(-1013, 78)

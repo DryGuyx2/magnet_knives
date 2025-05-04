@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2xa6yoncb31i"]
+[gd_scene load_steps=8 format=3 uid="uid://b2xa6yoncb31i"]
 
 [ext_resource type="Script" path="res://knives/knife.gd" id="1_wlqoh"]
 [ext_resource type="Texture2D" uid="uid://uh23yypl4kxb" path="res://knives/simple/knife.png" id="2_b56qm"]
+[ext_resource type="AudioStream" uid="uid://bio3ksbgti3n4" path="res://knives/knife_attack.mp3" id="3_mhgnh"]
+[ext_resource type="AudioStream" uid="uid://bmir1nquda6vp" path="res://knives/knife_death.mp3" id="4_bpn0d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13lg7"]
 radius = 9.0
@@ -47,5 +49,12 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e18ul")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mhgnh")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bpn0d")
+volume_db = 24.0
 
 [connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]

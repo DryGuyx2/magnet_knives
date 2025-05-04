@@ -26,6 +26,7 @@ enum State {
 @onready var hands: AnimatedSprite2D = $HandPivot/Hands
 @onready var muzzle: Node2D = $HandPivot/Hands/Gunpivot/Gun/Muzzle
 @export var cursor: Cursor
+@onready var step_sound: AudioStreamPlayer = $Step
 
 var BULLET_SCENE = preload("res://player/bullet/bullet.tscn")
 
@@ -43,13 +44,22 @@ func _ready() -> void:
 	$HurtBox.set_collision_layer_value(Global.collision_layers["player_detection"], true)
 	hands.play()
 
+var played_step: bool = false
+
 func _physics_process(delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
 	if move_direction != Vector2.ZERO:
 		last_moved_direction = move_direction
 	update_state() 
 	if current_state == State.MOVING:
-		velocity = move_direction * move_speed * delta + knockback_buffer * delta 
+		velocity = move_direction * move_speed * delta + knockback_buffer * delta
+		if player_animations.frame == 1 or player_animations.frame == 3:
+			if not played_step:
+				step_sound.play()
+				played_step = true
+				print("AAA")
+		else:
+			played_step = false
 	elif current_state == State.IDLE:
 		velocity = knockback_buffer * delta 
 	elif current_state == State.DASHING:
@@ -161,6 +171,7 @@ func handle_gun(delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot") and not gun_on_cooldown:
 		gun_animations.play()
+		$HandPivot/Hands/Gunpivot/Gun/GunFire.play()
 		var bullet = BULLET_SCENE.instantiate()
 		bullet.global_position = muzzle.global_position
 		bullet.target = cursor.position

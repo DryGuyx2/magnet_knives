@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2btqnfpr568w"]
+[gd_scene load_steps=16 format=3 uid="uid://d2btqnfpr568w"]
 
 [ext_resource type="Script" path="res://knives/walking/walking_knife.gd" id="1_avirx"]
 [ext_resource type="Texture2D" uid="uid://cdvbe0746m7jp" path="res://knives/walking/walking_knife.png" id="2_mt7vf"]
+[ext_resource type="AudioStream" uid="uid://bio3ksbgti3n4" path="res://knives/knife_attack.mp3" id="3_srmdj"]
+[ext_resource type="AudioStream" uid="uid://be8ec32stn3k4" path="res://knives/walking/knife_walk.mp3" id="4_jsp1v"]
+[ext_resource type="AudioStream" uid="uid://bmir1nquda6vp" path="res://knives/knife_death.mp3" id="5_4yh40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6on23"]
 atlas = ExtResource("2_mt7vf")
@@ -112,4 +115,16 @@ shape = SubResource("CapsuleShape2D_etv56")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_srmdj")
+
+[node name="Step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jsp1v")
+volume_db = 24.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4yh40")
+volume_db = 24.0
+
 [connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]
+[connection signal="finished" from="Step" to="." method="_on_step_finished"]
