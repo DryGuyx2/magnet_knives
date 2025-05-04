@@ -20,11 +20,11 @@ enum State {
 @export var max_health: int = 2
 
 @onready var player_animations: AnimatedSprite2D = $Body
-@onready var hand_pivot: Node2D = $HandPivot
-@onready var gun_animations: AnimatedSprite2D = $HandPivot/Hands/Gunpivot/Gun
-@onready var gun_pivot: Node2D = $HandPivot/Hands/Gunpivot
-@onready var hands: AnimatedSprite2D = $HandPivot/Hands
-@onready var muzzle: Node2D = $HandPivot/Hands/Gunpivot/Gun/Muzzle
+@onready var hand_pivot: Node2D = $Body/HandPivot
+@onready var gun_animations: AnimatedSprite2D = $Body/HandPivot/Hands/Gunpivot/Gun
+@onready var gun_pivot: Node2D = $Body/HandPivot/Hands/Gunpivot
+@onready var hands: AnimatedSprite2D = $Body/HandPivot/Hands
+@onready var muzzle: Node2D = $Body/HandPivot/Hands/Gunpivot/Gun/Muzzle
 @export var cursor: Cursor
 @onready var step_sound: AudioStreamPlayer = $Step
 
@@ -101,7 +101,12 @@ func update_state() -> void:
 		return
 	current_state = State.IDLE
 
+var flashing = false
 func handle_animations() -> void:
+	if invincible:
+		var flash_tween = create_tween()
+		flash_tween.tween_property(player_animations, "modulate:a", 0, 0.2)
+		flash_tween.tween_callback(deflash)
 	if current_state == State.DASHING:
 		return
 	
@@ -119,6 +124,14 @@ func handle_animations() -> void:
 		player_animations.play("moving_%s" % mouse_direction)
 	elif current_state == State.IDLE:
 		player_animations.play("idle_%s" % mouse_direction)
+
+func deflash() -> void:
+	var deflash_tween = create_tween()
+	deflash_tween.tween_property(player_animations, "modulate:a", 1, 0.2)
+	deflash_tween.tween_callback(finish_flash)
+
+func finish_flash() -> void:
+	flashing = false
 
 func get_mouse_string_direction() -> String:
 	var mouse_position = get_local_mouse_position()
@@ -170,7 +183,7 @@ func handle_gun(delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot") and not gun_on_cooldown:
 		gun_animations.play()
-		$HandPivot/Hands/Gunpivot/Gun/GunFire.play()
+		$Body/HandPivot/Hands/Gunpivot/Gun/GunFire.play()
 		var bullet = BULLET_SCENE.instantiate()
 		bullet.global_position = muzzle.global_position
 		bullet.target = cursor.position
@@ -186,6 +199,7 @@ func damage(amount: int, knockback: Vector2, knife_kind) -> void:
 	health -= amount
 	knockback_buffer = knockback
 	$DamageCooldown.start()
+	invincible = true
 	
 	if health <= 0:
 		emit_signal("dead", knife_kind)

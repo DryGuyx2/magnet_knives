@@ -54,6 +54,7 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_xg0gb")
 move_speed = 5000
+health = 6
 kind = "jpeg"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cimn3s3enkmeh"]
+[gd_scene load_steps=26 format=3 uid="uid://cimn3s3enkmeh"]
 
 [ext_resource type="Texture2D" uid="uid://cutu6gdkio44h" path="res://screens/knife_intro/knife_intro.png" id="1_qqw0h"]
 [ext_resource type="Script" path="res://screens/knife_intro/knife_intro.gd" id="2_kyd7k"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bxeuhw65jk0fm" path="res://MedodicaRegular.otf" id="4_mr3of"]
 [ext_resource type="Texture2D" uid="uid://uh23yypl4kxb" path="res://knives/simple/knife.png" id="5_hrowp"]
 [ext_resource type="Texture2D" uid="uid://b38i6i1d2jen8" path="res://knives/jpeg/jpeg_knife_stage1.jpg" id="6_x4h51"]
+[ext_resource type="AudioStream" uid="uid://dlkn8ml1rmgc7" path="res://screens/knife_intro/knife_intro.wav" id="7_qq3fe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukaku"]
 atlas = ExtResource("1_qqw0h")
@@ -172,7 +173,7 @@ text = "A new knife has appeared!"
 label_settings = SubResource("LabelSettings_pq3fn")
 
 [node name="SimpleKnife" type="Sprite2D" parent="."]
-position = Vector2(169.2, -40.6)
+position = Vector2(138.6, -39.2)
 scale = Vector2(4, 4)
 texture = ExtResource("5_hrowp")
 flip_h = true
@@ -183,5 +184,8 @@ rotation = 1.5708
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_x4h51")
 flip_h = true
+
+[node name="IntroSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qq3fe")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

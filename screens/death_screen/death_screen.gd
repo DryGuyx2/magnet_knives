@@ -16,6 +16,8 @@ func play() -> void:
 
 func finished_fading() -> void:
 	$DeathAnimation.play()
+	await get_tree().create_timer(2.7).timeout
+	$Death.play()
 
 func _on_death_animation_animation_finished():
 	var fade_tween = create_tween()

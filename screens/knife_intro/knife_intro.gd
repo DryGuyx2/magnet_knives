@@ -9,6 +9,7 @@ signal intro_finished
 var knife_kind: String
 
 func play_intro(kind: String) -> void:
+	$IntroSound.play()
 	modulate.a = 1.
 	knife_kind = kind
 	play()
@@ -37,7 +38,7 @@ func finished_intro() -> void:
 	
 	$Description.text = ""
 	var fade_out_tween = create_tween()
-	fade_out_tween.tween_property(self, "modulate:a", 0, 1)
+	fade_out_tween.tween_property(self, "modulate:a", 0, 0.3)
 	fade_out_tween.tween_callback(exit)
 
 func exit() -> void:
@@ -47,19 +48,19 @@ func walking_intro() -> void:
 	$WalkingKnifeBody.visible = true
 	$WalkingKnifeBody/WalkingKnifeLegs.play()
 	var walk_tween = create_tween()
-	walk_tween.tween_property($WalkingKnifeBody, "global_position", knife_endpoint.global_position, 1)
+	walk_tween.tween_property($WalkingKnifeBody, "global_position", knife_endpoint.global_position, 0.5)
 	walk_tween.tween_callback(write_text)
 
 func simple_intro() -> void:
 	$SimpleKnife.visible = true
 	var slide_tween = create_tween()
-	slide_tween.tween_property($SimpleKnife, "global_position", knife_endpoint.global_position, 1)
+	slide_tween.tween_property($SimpleKnife, "global_position", knife_endpoint.global_position, 0.5)
 	slide_tween.tween_callback(write_text)
 
 func jpeg_intro() -> void:
 	$JpegKnife.visible = true
 	var slide_tween = create_tween().set_parallel()
-	slide_tween.tween_property($JpegKnife, "global_position", knife_endpoint.global_position, 1)
+	slide_tween.tween_property($JpegKnife, "global_position", knife_endpoint.global_position, 0.5)
 	slide_tween.tween_property($JpegKnife, "rotation", -500, 1)
 	slide_tween.tween_callback(write_text)
 
@@ -71,5 +72,5 @@ func write_text() -> void:
 		displayed_text = "%s%s" % [displayed_text, character]
 		description_label.text = displayed_text
 		await get_tree().create_timer(0.1).timeout
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.5).timeout
 	finished_intro()
