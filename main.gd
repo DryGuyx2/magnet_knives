@@ -9,3 +9,7 @@ func _on_knife_intro_intro_finished() -> void:
 func _on_player_new_knife_discovered(kind: String) -> void:
 	knife_intro.play_intro(kind)
 	get_tree().paused = true
+
+
+func _on_player_dead(_knife_kind: String) -> void:
+	get_tree().paused = true

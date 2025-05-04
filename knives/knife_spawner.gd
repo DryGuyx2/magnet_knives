@@ -15,4 +15,5 @@ func spawn(kind: String) -> void:
 	knife.player = player
 	knife.global_position = global_position
 	knife.connect("entered_view", player.knife_entered_view)
+	knife.connect("killed", player.knife_killed)
 	spawn_node.add_child(knife)

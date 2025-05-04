@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ojnmeh3ln77a"]
+
+[ext_resource type="Texture2D" uid="uid://cxbflfnrqar81" path="res://screens/death_screen/black_square.png" id="1_ef7sb"]
+[ext_resource type="Script" path="res://screens/death_screen/death_screen.gd" id="1_io356"]
+[ext_resource type="Texture2D" uid="uid://ec6a8cchqnyr" path="res://screens/death_screen/death_stats.png" id="2_ydl1w"]
+[ext_resource type="FontFile" uid="uid://bxeuhw65jk0fm" path="res://MedodicaRegular.otf" id="4_5fmab"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgjby"]
+font = ExtResource("4_5fmab")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xukqt"]
+font = ExtResource("4_5fmab")
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0h0a"]
+font = ExtResource("4_5fmab")
+
+[node name="DeathScreen" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_io356")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(2, 1)
+texture = ExtResource("1_ef7sb")
+
+[node name="Stats" type="Sprite2D" parent="."]
+texture = ExtResource("2_ydl1w")
+
+[node name="KnivesKilled" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -25.0
+offset_right = 23.0
+offset_bottom = -2.0
+text = "53"
+label_settings = SubResource("LabelSettings_fgjby")
+
+[node name="DeathCause" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -48.0
+offset_right = 22.0
+offset_bottom = -25.0
+text = "Jpeg
+"
+label_settings = SubResource("LabelSettings_xukqt")
+
+[node name="TimeSurvived" type="Label" parent="."]
+offset_left = -18.0
+offset_top = -5.0
+offset_right = 22.0
+offset_bottom = 18.0
+text = "11:03"
+label_settings = SubResource("LabelSettings_b0h0a")

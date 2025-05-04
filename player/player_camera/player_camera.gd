@@ -13,13 +13,7 @@ var health_hud_levels = ["empty", "half", "full"]
 
 func _process(delta: float) -> void:
 	game_time += delta
-	var seconds = int(game_time)
-	var minutes = (seconds/60)
-	seconds -= minutes * 60
-	if len(str(seconds)) == 1:
-		time.text = "%s:0%s" % [minutes, seconds]
-		return
-	time.text = "%s:%s" % [minutes, seconds]
+	time.text = format_time()
 	
 	if int(game_time) % 60 == 0:
 		emit_signal("difficulty_increase")
@@ -29,3 +23,11 @@ func _ready() -> void:
 
 func _on_player_hurt(new_health) -> void:
 	health_hud.play(health_hud_levels[new_health])
+
+func format_time() -> String:
+	var seconds = int(game_time)
+	var minutes = (seconds/60)
+	seconds -= minutes * 60
+	if len(str(seconds)) == 1:
+		return "%s:0%s" % [minutes, seconds]
+	return "%s:%s" % [minutes, seconds]

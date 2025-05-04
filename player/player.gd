@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-signal dead
+signal dead(knife_kind: String)
 signal hurt(health: int)
 signal new_knife_discovered(kind: String)
 
@@ -43,6 +43,8 @@ func _ready() -> void:
 	hands.play()
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("test_4"):
+		damage(1, Vector2.ZERO, "jpeg")
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
 	if move_direction != Vector2.ZERO:
 		last_moved_direction = move_direction
@@ -167,16 +169,15 @@ func handle_gun(delta: float) -> void:
 		gun_cooldown_time_left = gun_cooldown_time
 
 var knockback_buffer: Vector2 = Vector2.ZERO
-func damage(amount: int, knockback: Vector2) -> void:
+func damage(amount: int, knockback: Vector2, knife_kind) -> void:
 	if current_state == State.DASHING:
 		return
 	
 	health -= amount
 	knockback_buffer = knockback
 	
-	if health < 1:
-		emit_signal("dead")
-		queue_free()
+	if health <= 0:
+		emit_signal("dead", knife_kind)
 	
 	emit_signal("hurt", health)
 
@@ -185,3 +186,7 @@ func knife_entered_view(kind: String) -> void:
 	if kind not in discovered_knives:
 		discovered_knives.append(kind)
 		emit_signal("new_knife_discovered", kind)
+
+var knives_killed = 0
+func knife_killed() -> void:
+	knives_killed += 1

@@ -21,9 +21,6 @@ func _ready() -> void:
 var spawn_time_left = knife_spawn_time
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_4"):
-		spawn_knife()
-	
 	spawn_time_left -= delta
 	if spawn_time_left <= 0:
 		spawn_time_left = knife_spawn_time

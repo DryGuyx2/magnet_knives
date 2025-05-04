@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Knife
 
 signal entered_view(kind: String)
+signal killed
 
 @export var move_speed: int = 10000
 @export var health: int = 3
@@ -33,6 +34,7 @@ func damage(amount: int, knockback: Vector2) -> void:
 	knockback_buffer = knockback
 	
 	if health < 1:
+		emit_signal("killed")
 		queue_free()
 
 func _on_attack_box_area_entered(area: Area2D) -> void:
