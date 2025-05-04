@@ -26,8 +26,9 @@ sprite_frames = SubResource("SpriteFrames_27pdw")
 offset = Vector2(6.565, 11.51)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 513
+collision_mask = 513
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0.0999988, -1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8648m")
