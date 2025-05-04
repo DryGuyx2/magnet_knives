@@ -43,8 +43,6 @@ func _ready() -> void:
 	hands.play()
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_4"):
-		damage(1, Vector2.ZERO, "jpeg")
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") 
 	if move_direction != Vector2.ZERO:
 		last_moved_direction = move_direction
