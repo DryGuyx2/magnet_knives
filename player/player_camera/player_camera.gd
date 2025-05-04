@@ -1,6 +1,8 @@
 extends Camera2D
 class_name PlayerCamera
 
+signal difficulty_increase
+
 @export var player: Player
 
 @onready var health_hud = $Health
@@ -18,6 +20,9 @@ func _process(delta: float) -> void:
 		time.text = "%s:0%s" % [minutes, seconds]
 		return
 	time.text = "%s:%s" % [minutes, seconds]
+	
+	if int(game_time) % 60 == 0:
+		emit_signal("difficulty_increase")
 
 func _ready() -> void:
 	player.hurt.connect(_on_player_hurt)

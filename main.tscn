@@ -45,6 +45,8 @@ scale = Vector2(0.9, 0.9)
 script = ExtResource("6_14686")
 player = NodePath("../Player")
 spawn_node = NodePath("..")
+difficulty_increase = 3
+knife_spawn_time = 5.0
 
 [node name="KnifeSpawner" parent="Map/KnifeSpawnerManager" instance=ExtResource("7_stlfv")]
 position = Vector2(998, 195)
@@ -64,4 +66,5 @@ z_index = 6
 position = Vector2(-1079, -1385)
 
 [connection signal="new_knife_discovered" from="Map/Player" to="." method="_on_player_new_knife_discovered"]
+[connection signal="difficulty_increase" from="Map/Player/Camera" to="Map/KnifeSpawnerManager" method="_on_camera_difficulty_increase"]
 [connection signal="intro_finished" from="Map/Player/KnifeIntro" to="." method="_on_knife_intro_intro_finished"]
