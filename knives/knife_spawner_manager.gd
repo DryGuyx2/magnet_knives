@@ -9,7 +9,7 @@ class_name KnifeSpawnerManager
 @onready var spawners: Array = get_children()
 var off_screen_spawners: Array = []
 
-var knife_types = ["jpeg", "simple", "walking"]
+var knife_types = ["simple"]
 
 var difficulty = 6
 
@@ -41,6 +41,10 @@ func spawn_knife() -> void:
 
 func _on_camera_difficulty_increase() -> void:
 	difficulty += difficulty_increase
+	if difficulty == 9:
+		knife_types.append("walking")
+	if difficulty == 12:
+		knife_types.append("jpeg")
 
 func distance_from_player(spawner_a: VisibleOnScreenNotifier2D, spawner_b: VisibleOnScreenNotifier2D) -> int:
 	var distance_a = spawner_a.global_position - player.global_position

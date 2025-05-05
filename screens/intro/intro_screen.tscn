@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbw577jjqhu0"]
+[gd_scene load_steps=19 format=3 uid="uid://cbw577jjqhu0"]
 
 [ext_resource type="Texture2D" uid="uid://0nyrnogrx10d" path="res://screens/intro/start_screen.png" id="1_rlr2q"]
 [ext_resource type="Script" path="res://screens/intro/intro_screen.gd" id="2_daiou"]
 [ext_resource type="Texture2D" uid="uid://x03v6vyf333d" path="res://screens/intro/start_button.png" id="3_wivyy"]
 [ext_resource type="Texture2D" uid="uid://bxwq22ycw2f1r" path="res://screens/intro/keys.png" id="4_srau4"]
 [ext_resource type="Texture2D" uid="uid://bg6wnkj7hthod" path="res://screens/intro/cartoon.png" id="5_33bi7"]
+[ext_resource type="Texture2D" uid="uid://b4xm8l3tla3l1" path="res://screens/intro/audio_controls.png" id="5_37ius"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0rgs"]
 atlas = ExtResource("1_rlr2q")
@@ -112,9 +113,13 @@ position = Vector2(0, 0.0833321)
 shape = SubResource("RectangleShape2D_bovpq")
 
 [node name="Keys" type="Sprite2D" parent="."]
-position = Vector2(-74.6667, 6.16667)
+position = Vector2(-78.8333, 12.1667)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_srau4")
+
+[node name="AudioKeys" type="Sprite2D" parent="Keys"]
+position = Vector2(0.333333, 64.3333)
+texture = ExtResource("5_37ius")
 
 [node name="Cartoon" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

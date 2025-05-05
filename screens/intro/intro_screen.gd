@@ -44,5 +44,6 @@ func finished_move() -> void:
 	fade_out_tween.tween_callback(finish_cartoon)
 
 func finish_cartoon() -> void:
+	get_parent().get_parent().get_parent().find_child("Music").start()
 	get_tree().paused = false
 	queue_free()

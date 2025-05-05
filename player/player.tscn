@@ -497,7 +497,7 @@ position = Vector2(5.22537, 1.90145)
 
 [node name="GunFire" type="AudioStreamPlayer" parent="Body/HandPivot/Hands/Gunpivot/Gun"]
 stream = ExtResource("6_0ey6e")
-volume_db = 24.0
+volume_db = 5.216
 max_polyphony = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
