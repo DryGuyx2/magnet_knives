@@ -17,3 +17,4 @@ func spawn(kind: String) -> void:
 	knife.connect("entered_view", player.knife_entered_view)
 	knife.connect("killed", player.knife_killed)
 	spawn_node.add_child(knife)
+	knife.add_to_group("knives")

@@ -35,3 +35,7 @@ func format_time() -> String:
 	if len(str(seconds)) == 1:
 		return "%s:0%s" % [minutes, seconds]
 	return "%s:%s" % [minutes, seconds]
+
+func reset() -> void:
+	elapsed_difficulty_time = 0
+	game_time = 0

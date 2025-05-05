@@ -87,7 +87,7 @@ position = Vector2(-1121, 33)
 
 [node name="Cursor" parent="." instance=ExtResource("2_oxb3t")]
 process_mode = 3
-z_index = 6
+z_index = 8
 position = Vector2(-1079, -1385)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -101,4 +101,5 @@ script = ExtResource("11_6jnle")
 [connection signal="new_knife_discovered" from="Map/Player" to="." method="_on_player_new_knife_discovered"]
 [connection signal="difficulty_increase" from="Map/Player/Camera" to="Map/KnifeSpawnerManager" method="_on_camera_difficulty_increase"]
 [connection signal="intro_finished" from="Map/Player/KnifeIntro" to="." method="_on_knife_intro_intro_finished"]
+[connection signal="restart" from="Map/Player/DeathScreen" to="." method="_on_death_screen_restart"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

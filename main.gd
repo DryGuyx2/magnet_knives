@@ -19,3 +19,10 @@ func _process(_delta: float) -> void:
 		AudioServer.set_bus_volume_db(master_bus, AudioServer.get_bus_volume_db(master_bus) + 10)
 	if Input.is_action_just_pressed("volume_down"):
 		AudioServer.set_bus_volume_db(master_bus, AudioServer.get_bus_volume_db(master_bus) - 10)
+
+func _on_death_screen_restart() -> void:
+	get_tree().paused = false
+	$Map/Player.reset()
+	$Map/KnifeSpawnerManager.reset()
+	$Map/Player/Camera.reset()
+	$Music.start()

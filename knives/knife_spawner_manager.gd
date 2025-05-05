@@ -54,3 +54,7 @@ func distance_from_player(spawner_a: VisibleOnScreenNotifier2D, spawner_b: Visib
 	var total_distance_b = distance_b.abs().x + distance_b.abs().y
 	
 	return total_distance_a < total_distance_b
+
+func reset() -> void:
+	difficulty = 6
+	get_tree().call_group("knives", "queue_free")

@@ -218,5 +218,11 @@ var knives_killed = 0
 func knife_killed() -> void:
 	knives_killed += 1
 
-func _on_damage_cooldown_timeout():
+func _on_damage_cooldown_timeout() -> void:
 	invincible = false
+
+func reset() -> void:
+	health = max_health
+	knives_killed = 0
+	current_state = State.IDLE
+	emit_signal("hurt", health)
